@@ -11,8 +11,8 @@
     --bg:#fff; --fg:#1d1d1f; --muted:#6e6e73; --faint:#86868b;
     --card:#f5f5f7; --soft:#f0f0f5;
     --accent:#5b4fd6; --bright:#8b81fc;
-    --hero:#f6f6fa;
-    --shadow:0 1px 2px rgba(0,0,0,.04), 0 8px 24px rgba(0,0,0,.06);
+    --hero-a:#efedff; --hero-b:#fff;
+    --shadow:0 1px 2px rgba(91,79,214,.06), 0 10px 30px rgba(91,79,214,.10);
     --bar:72px; --safe:env(safe-area-inset-top,0px);
     --ease:cubic-bezier(.22,.61,.36,1);
   }
@@ -21,8 +21,8 @@
       --bg:#000; --fg:#f5f5f7; --muted:#86868b; --faint:#6e6e73;
       --card:#1c1c1e; --soft:#1c1c1e;
       --accent:#a79dff; --bright:#8b81fc;
-      --hero:#0d0d12;
-      --shadow:0 1px 2px rgba(0,0,0,.5), 0 8px 24px rgba(0,0,0,.45);
+      --hero-a:#16142c; --hero-b:#000;
+      --shadow:0 1px 2px rgba(0,0,0,.5), 0 10px 30px rgba(0,0,0,.45);
     }
     .claim{color:#fff}
   }
@@ -73,7 +73,7 @@
   .seg .thumb{position:absolute;top:3px;bottom:3px;border-radius:980px;
     background:var(--accent);transition:transform .42s var(--ease),width .42s var(--ease)}
 
-  .stage{position:relative;background:var(--hero)}
+  .stage{position:relative;background:radial-gradient(130% 62% at 50% 0%,var(--hero-a) 0%,var(--hero-b) 72%)}
   html.js .stage{height:290vh}
   .stage-in{max-width:820px;margin:0 auto;padding:var(--bar) 24px 40px;text-align:center}
   html.js .stage-in{position:relative;position:sticky;top:0;height:100vh;height:100svh;
@@ -82,7 +82,8 @@
   .slot{position:relative;width:100%;margin-top:22px}
   html.js .grp{position:absolute;left:0;right:0;top:0}
   html.js .g-claim{opacity:0}
-  .appicon{width:150px;height:150px;border-radius:30%;box-shadow:var(--shadow);
+  .appicon{width:150px;height:150px;border-radius:30%;
+           box-shadow:var(--shadow);
            display:block;margin:0 auto;transform-origin:center bottom;will-change:transform}
   html.js .g-title,html.js .g-claim{will-change:transform,opacity}
   .stage .wordmark{font-size:21px;display:block;margin:0}
@@ -105,7 +106,10 @@
   @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(4px)}}
 
   main{max-width:760px;margin:0 auto;padding:0 24px}
-  section{padding:52px 0;max-width:620px;margin:0 auto}
+  section{padding:52px 0;max-width:660px;margin:0 auto}
+  .sec-head{display:flex;align-items:center;gap:16px;margin:0 0 14px -60px}
+  .sfsym{width:44px;height:44px;flex:none;color:var(--accent)}
+  section h2{margin:0}
   h2{font-size:clamp(24px,3.6vw,32px);line-height:1.28;margin:0 0 14px;
      letter-spacing:-.018em;font-weight:650}
   p{margin:13px 0}
@@ -138,15 +142,6 @@
   footer{max-width:760px;margin:0 auto;padding:44px 24px 72px;
          color:var(--faint);font-size:13px;text-align:center}
 
-  .totop{position:fixed;right:24px;bottom:24px;z-index:12;width:44px;height:44px;
-    border-radius:50%;background:var(--card);
-    color:var(--accent);cursor:pointer;display:grid;place-items:center;
-    opacity:0;transform:translateY(12px) scale(.9);pointer-events:none;
-    transition:opacity .4s var(--ease),transform .4s var(--ease)}
-  html.scrolled .totop{opacity:1;transform:none;pointer-events:auto}
-  .totop:hover{background:var(--soft)}
-  .totop svg{width:18px;height:18px}
-
   html[data-active="zh"] [data-lang="en"]{display:none}
   html[data-active="en"] [data-lang="zh"]{display:none}
   .swap{transition:opacity .18s ease}
@@ -176,6 +171,8 @@
            max-width:340px;margin:26px auto 0}
     .chip{width:100%;justify-content:center}
     section{padding:40px 0}
+    .sec-head{gap:12px;margin-left:0}
+    .sfsym{width:38px;height:38px}
     .card .bio{text-align:center}
   }
 </style>
@@ -269,8 +266,6 @@
 
       setO(date,seg(p,.74,.86).toFixed(3));
       setO(hint,(1-seg(p,0,.14)).toFixed(3));
-
-      document.documentElement.classList.toggle('scrolled', scrollY>innerHeight*.5);
     }
 
     var pending=false, guard=0;
@@ -287,11 +282,6 @@
       addEventListener('scroll',onScroll,{passive:true});
       addEventListener('resize',function(){ measure(); frame(); });
       addEventListener('load',function(){ measure(); frame(); });
-    }else{
-      document.documentElement.classList.add('scrolled');
-      addEventListener('scroll',function(){
-        document.documentElement.classList.toggle('scrolled', scrollY>300);
-      },{passive:true});
     }
 
     var io=new IntersectionObserver(function(es){
@@ -376,8 +366,10 @@
 <main class="swap">
 
   <section class="reveal">
-    <div>
+    <div class="sec-head">
+      <svg class="sfsym" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19a9 3 0 0 0 18 0V5"/><path d="M3 12a9 3 0 0 0 18 0"/><path d="m3 3 18 18"/></svg>
       <h2 data-lang="zh">数据收集</h2><h2 data-lang="en">Data Collection</h2>
+    </div>
       <p data-lang="zh">
         本应用<strong>不收集用户的任何个人信息或使用数据</strong>。本应用不含任何网络传输
         功能，不会将任何数据发送至开发者的服务器或任何其他服务器。本应用不设账号体系，
@@ -392,12 +384,13 @@
         crash-reporting, or advertising components, and does not track users across applications
         or websites.
       </p>
-    </div>
   </section>
 
   <section class="reveal">
-    <div>
+    <div class="sec-head">
+      <svg class="sfsym" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M15 2v2M9 2v2M15 20v2M9 20v2M2 15h2M2 9h2M20 15h2M20 9h2"/></svg>
       <h2 data-lang="zh">本地处理</h2><h2 data-lang="en">Local Processing</h2>
+    </div>
       <p data-lang="zh">
         本应用的设备检测功能需读取本机的硬件与系统信息，并读取 Apple Pencil 的传感器数据。
         上述信息<strong>仅在用户设备本地处理与显示，不会离开设备</strong>。用户可主动将检测
@@ -412,12 +405,13 @@
         any such transmission is initiated and controlled entirely by the user, and the
         application plays no part in it.
       </p>
-    </div>
   </section>
 
   <section class="reveal">
-    <div>
+    <div class="sec-head">
+      <svg class="sfsym" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
       <h2 data-lang="zh">第三方共享</h2><h2 data-lang="en">Third-Party Sharing</h2>
+    </div>
       <p data-lang="zh">
         本应用不与任何第三方共享用户数据，未接入任何第三方数据服务、分析平台或广告网络。
       </p>
@@ -429,8 +423,10 @@
   </section>
 
   <section class="reveal">
-    <div>
+    <div class="sec-head">
+      <svg class="sfsym" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/><line x1="10" x2="10" y1="11" y2="17"/><line x1="14" x2="14" y1="11" y2="17"/></svg>
       <h2 data-lang="zh">数据留存与删除</h2><h2 data-lang="en">Data Retention and Deletion</h2>
+    </div>
       <p data-lang="zh">
         本应用仅在设备本地存储用户的应用内偏好设置，该数据保存于本应用的沙盒容器内。
         用户可通过应用内的初始化功能清除全部设置与数据，亦可通过删除本应用一并清除。
@@ -448,8 +444,10 @@
   </section>
 
   <section class="reveal">
-    <div>
+    <div class="sec-head">
+      <svg class="sfsym" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/><path d="M16 16h5v5"/></svg>
       <h2 data-lang="zh">政策更新</h2><h2 data-lang="en">Changes to This Policy</h2>
+    </div>
       <p data-lang="zh">本政策如有修订，将在本页面公布并更新上方的生效日期。</p>
       <p data-lang="en">
         Any revision to this policy will be published on this page, and the effective date above
@@ -459,8 +457,10 @@
   </section>
 
   <section class="reveal">
-    <div>
+    <div class="sec-head">
+      <svg class="sfsym" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
       <h2 data-lang="zh">联系方式</h2><h2 data-lang="en">Contact</h2>
+    </div>
       <p data-lang="zh">
         如对本隐私政策有任何疑问，请通过电子邮件联系：
         <a href="mailto:sheri918303284@163.com"><code>sheri918303284@163.com</code></a>
@@ -549,11 +549,6 @@
 <footer>
   <p>© 2026 <span class="wordmark"><span class="w1">Pencil</span><span class="w2"> Monitor</span></span></p>
 </footer>
-
-<button class="totop" onclick="scrollTo({top:0,behavior:'smooth'})" aria-label="回到顶部">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
-       stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
-</button>
 
 </body>
 </html>
