@@ -256,21 +256,21 @@
       var a=easeOut(seg(p,0,.46));
       setT(icon,'translate3d(0,'+(-a*rise).toFixed(1)+'px,0) scale('+(1-a*.55).toFixed(3)+')');
 
-      var b=easeOut(seg(p,.12,.46));
-      setT(gTitle,'translate3d(0,'+(-b*28).toFixed(1)+'px,0) scale('+(1-b*.10).toFixed(3)+')');
-      setO(gTitle,(1-seg(p,.16,.42)).toFixed(3));
+      var b=easeOut(seg(p,.08,.32));
+      setT(gTitle,'translate3d(0,'+(-b*34).toFixed(1)+'px,0) scale('+(1-b*.12).toFixed(3)+')');
+      setO(gTitle,(1-seg(p,.10,.32)).toFixed(3));
 
-      var c=easeOut(seg(p,.34,.62));
-      setT(gClaim,'translate3d(0,'+((1-c)*26).toFixed(1)+'px,0)');
+      var c=easeOut(seg(p,.34,.60));
+      setT(gClaim,'translate3d(0,'+((1-c)*30).toFixed(1)+'px,0)');
       setO(gClaim,c.toFixed(3));
 
       for(var i=0;i<chips.length;i++){
-        var st=.52+i*.062, t=easeOut(seg(p,st,st+.11));
+        var st=.50+i*.062, t=easeOut(seg(p,st,st+.11));
         setT(chips[i],'translate3d(0,'+((1-t)*22).toFixed(1)+'px,0) scale('+(.92+t*.08).toFixed(3)+')');
         setO(chips[i],t.toFixed(3));
       }
 
-      setO(date,seg(p,.74,.86).toFixed(3));
+      setO(date,seg(p,.72,.84).toFixed(3));
       setO(hint,(1-seg(p,0,.14)).toFixed(3));
     }
 
