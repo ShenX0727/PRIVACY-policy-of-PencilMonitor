@@ -30,7 +30,8 @@
   body{margin:0;background:var(--bg);color:var(--fg);overflow-x:hidden;
     font:17px/1.75 -apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",
          "PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
-    -webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%}
+    -webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%;
+    transition:background-color .3s ease,color .3s ease}
   a{color:var(--accent);text-decoration:none}
   a:hover{text-decoration:underline}
 
@@ -38,20 +39,14 @@
   .wordmark .w1{font-weight:700;font-style:italic}
   .wordmark .w2{font-weight:400;color:var(--muted)}
 
+  /* 顶部毛玻璃导航条：原来叠了4层不同模糊半径的 backdrop-filter 做渐变模糊，
+     在手机上会持续拖慢滚动合成——backdrop-filter 本身就是移动端GPU很吃重的
+     效果，叠4层等于让每一帧都重复算4次。改成1层，视觉上仍有模糊+渐隐效果。 */
   .pblur{position:fixed;top:0;left:0;right:0;height:calc(var(--bar) + var(--safe));z-index:10;pointer-events:none}
-  .pblur i{position:absolute;inset:0;display:block}
-  .pblur i:nth-child(1){backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
-    -webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 26%,transparent 58%);
-            mask-image:linear-gradient(to bottom,#000 0%,#000 26%,transparent 58%)}
-  .pblur i:nth-child(2){backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
-    -webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 42%,transparent 74%);
-            mask-image:linear-gradient(to bottom,#000 0%,#000 42%,transparent 74%)}
-  .pblur i:nth-child(3){backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);
-    -webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 56%,transparent 88%);
-            mask-image:linear-gradient(to bottom,#000 0%,#000 56%,transparent 88%)}
-  .pblur i:nth-child(4){backdrop-filter:blur(1.4px);-webkit-backdrop-filter:blur(1.4px);
-    -webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 68%,transparent 100%);
-            mask-image:linear-gradient(to bottom,#000 0%,#000 68%,transparent 100%)}
+  .pblur i{position:absolute;inset:0;display:block;
+    backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+    -webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 40%,transparent 82%);
+            mask-image:linear-gradient(to bottom,#000 0%,#000 40%,transparent 82%)}
   .pblur::after{content:"";position:absolute;inset:0;
     background:linear-gradient(to bottom,color-mix(in srgb,var(--bg) 52%,transparent) 0%,transparent 84%)}
 
@@ -111,7 +106,8 @@
           display:grid;grid-template-columns:52px 1fr;gap:22px;align-items:start}
   section:last-of-type{border-bottom:0}
   .sicon{width:52px;height:52px;border-radius:15px;background:var(--soft);
-         display:grid;place-items:center;color:var(--accent);transition:transform .5s var(--ease)}
+         display:grid;place-items:center;color:var(--accent);
+         transition:transform .5s var(--ease),background-color .3s ease,color .3s ease}
   section:hover .sicon{transform:scale(1.06) rotate(-3deg)}
   .sicon svg{width:26px;height:26px}
   .num{color:var(--bright);font-size:12px;font-weight:700;letter-spacing:.1em;
@@ -131,7 +127,8 @@
   .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
   .card{background:var(--bg);border:1px solid var(--card-line);border-radius:20px;
         padding:32px 26px;text-align:center;
-        transition:transform .4s var(--ease),box-shadow .4s var(--ease)}
+        transition:transform .4s var(--ease),box-shadow .4s var(--ease),
+                   background-color .3s ease,border-color .3s ease}
   .card:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
   .card img{width:80px;height:80px;border-radius:50%;margin:0 auto 16px;display:block;
             border:1px solid var(--card-line)}
@@ -144,28 +141,26 @@
        border-radius:980px;padding:5px 11px}
   .ghbtn{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--card-line);
          border-radius:980px;padding:9px 18px;font-size:14px;font-weight:600;color:var(--fg);
-         transition:transform .3s var(--ease),background .3s var(--ease)}
+         transition:transform .3s var(--ease),background .3s var(--ease),
+                    color .3s ease,border-color .3s ease}
   .ghbtn:hover{background:var(--card);transform:translateY(-1px);text-decoration:none}
   .ghbtn svg{width:16px;height:16px}
 
   footer{max-width:760px;margin:0 auto;padding:44px 24px 72px;
          color:var(--faint);font-size:13px;text-align:center}
 
-  .totop{position:fixed;right:24px;bottom:24px;z-index:12;width:44px;height:44px;
-    border-radius:50%;border:1px solid var(--card-line);
-    background:color-mix(in srgb,var(--bg) 80%,transparent);
-    backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
-    color:var(--accent);cursor:pointer;display:grid;place-items:center;
-    opacity:0;transform:translateY(12px) scale(.9);pointer-events:none;
-    transition:opacity .4s var(--ease),transform .4s var(--ease)}
-  html.scrolled .totop{opacity:1;transform:none;pointer-events:auto}
-  .totop:hover{transform:translateY(-2px)}
-  .totop svg{width:18px;height:18px}
+  /* 开发者卡片：跟随光标移动的柔光高光 */
+  .card{position:relative;overflow:hidden}
+  .card::before{content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;
+    background:radial-gradient(240px circle at var(--mx,50%) var(--my,50%),
+      color-mix(in srgb,var(--bright) 20%,transparent),transparent 70%);
+    opacity:0;transition:opacity .35s ease}
+  .card:hover::before{opacity:1}
 
   html[data-active="zh"] [data-lang="en"]{display:none}
   html[data-active="en"] [data-lang="zh"]{display:none}
-  .swap{transition:opacity .18s ease,transform .18s ease}
-  html.swapping .swap{opacity:0;transform:translateY(5px)}
+  .swap{transition:opacity .32s var(--ease),transform .32s var(--ease);transform-origin:center top}
+  html.swapping .swap{opacity:0;transform:translateY(6px) scale(.985)}
 
   .reveal{opacity:0;transform:translateY(22px);
           transition:opacity .7s var(--ease),transform .7s var(--ease)}
@@ -181,10 +176,7 @@
   }
   @media (max-width:640px){
     :root{--bar:56px}
-    .pblur i:nth-child(1){backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px)}
-    .pblur i:nth-child(2){backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
-    .pblur i:nth-child(3){backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px)}
-    .pblur i:nth-child(4){backdrop-filter:blur(1px);-webkit-backdrop-filter:blur(1px)}
+    .pblur i{backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px)}
     html.js .stage{height:260vh}
     .appicon{width:118px;height:118px}
     section{padding:40px 0;grid-template-columns:1fr;gap:14px}
@@ -219,8 +211,8 @@
     window.__sA=setTimeout(function(){
       applyLang(l); paintThumb();
       window.__sB=setTimeout(function(){ d.classList.remove('swapping'); },20);
-    },180);
-    window.__sC=setTimeout(function(){ d.classList.remove('swapping'); },900);
+    },260);
+    window.__sC=setTimeout(function(){ d.classList.remove('swapping'); },1000);
   }
   (function(){
     var saved=null; try{ saved=localStorage.getItem('pm-lang'); }catch(_){}
@@ -280,8 +272,6 @@
 
       setO(date,seg(p,.74,.86).toFixed(3));
       setO(hint,(1-seg(p,0,.14)).toFixed(3));
-
-      document.documentElement.classList.toggle('scrolled', scrollY>innerHeight*.5);
     }
 
     var pending=false, guard=0;
@@ -297,11 +287,6 @@
       addEventListener('scroll',onScroll,{passive:true});
       addEventListener('resize',function(){ measure(); frame(); });
       addEventListener('load',function(){ measure(); frame(); });
-    }else{
-      document.documentElement.classList.add('scrolled');
-      addEventListener('scroll',function(){
-        document.documentElement.classList.toggle('scrolled', scrollY>300);
-      },{passive:true});
     }
 
     var io=new IntersectionObserver(function(es){
@@ -310,13 +295,22 @@
       });
     },{threshold:.12,rootMargin:'0px 0px -8% 0px'});
     document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+    // 开发者卡片：跟随光标移动的柔光高光
+    document.querySelectorAll('.card').forEach(function(card){
+      card.addEventListener('pointermove',function(e){
+        var r=card.getBoundingClientRect();
+        card.style.setProperty('--mx',((e.clientX-r.left)/r.width*100).toFixed(1)+'%');
+        card.style.setProperty('--my',((e.clientY-r.top)/r.height*100).toFixed(1)+'%');
+      });
+    });
   });
 </script>
 </head>
 <body>
 
 <div id="top"></div>
-<div class="pblur" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+<div class="pblur" aria-hidden="true"><i></i></div>
 
 <div class="langbar">
   <div class="langbar-in">
@@ -395,18 +389,15 @@
       <span class="num" data-lang="zh">第一节</span><span class="num" data-lang="en">Section 1</span>
       <h2 data-lang="zh">数据收集</h2><h2 data-lang="en">Data Collection</h2>
       <p data-lang="zh">
-        本应用<strong>不收集用户的任何个人信息或使用数据</strong>。本应用不含任何网络传输
-        功能，不会将任何数据发送至开发者的服务器或任何其他服务器。本应用不设账号体系，
-        不要求注册或登录，未集成任何统计分析、崩溃上报或广告组件，亦不进行跨应用或
-        跨网站的用户追踪。
+        本应用<strong>不收集任何用户数据</strong>，也没有网络传输功能——不会向开发者或
+        任何第三方的服务器发送数据。它不设账号体系，无需注册或登录，未接入统计分析、
+        崩溃上报或广告组件，也不会跨应用或跨网站追踪用户。
       </p>
       <p data-lang="en">
-        This application <strong>does not collect any personal information or usage data</strong>
-        from its users. It contains no network transmission functionality and does not send any
-        data to the developers' servers or to any other server. The application has no account
-        system and requires no registration or sign-in. It integrates no analytics,
-        crash-reporting, or advertising components, and does not track users across applications
-        or websites.
+        This application <strong>collects no user data</strong> and includes no network
+        transmission — nothing is ever sent to the developers' servers or anyone else's. It has
+        no account system, requires no sign-in, and integrates no analytics, crash reporting, or
+        advertising components; nor does it track users across other apps or websites.
       </p>
     </div>
   </section>
@@ -421,18 +412,16 @@
       <span class="num" data-lang="zh">第二节</span><span class="num" data-lang="en">Section 2</span>
       <h2 data-lang="zh">本地处理</h2><h2 data-lang="en">Local Processing</h2>
       <p data-lang="zh">
-        本应用的设备检测功能需读取本机的硬件与系统信息，并读取 Apple Pencil 的传感器数据。
-        上述信息<strong>仅在用户设备本地处理与显示，不会离开设备</strong>。用户可主动将检测
-        报告导出并通过系统分享功能发送给他人；报告的发送完全由用户发起并控制，本应用不参与
-        其传输过程。
+        设备检测功能会读取本机的硬件与系统信息，以及 Apple Pencil 的传感器数据；这些信息
+        <strong>仅在设备本地处理与显示，不会离开设备</strong>。用户可以导出检测报告，并通过
+        系统分享功能发送给他人——这一步完全由用户发起和控制，本应用不参与传输过程。
       </p>
       <p data-lang="en">
-        The application's device diagnostic features read hardware and system information from
-        the device, as well as sensor data from Apple Pencil. Such information is
-        <strong>processed and displayed solely on the user's device and does not leave it</strong>.
-        Users may choose to export a diagnostic report and send it via the system share function;
-        any such transmission is initiated and controlled entirely by the user, and the
-        application plays no part in it.
+        The diagnostic features read hardware and system information from the device, along with
+        sensor data from Apple Pencil; this information is
+        <strong>processed and displayed only on the device, and never leaves it</strong>. Users
+        may export a diagnostic report and send it via the system share sheet — that step is
+        entirely user-initiated, and the application takes no part in the transfer.
       </p>
     </div>
   </section>
@@ -447,10 +436,10 @@
       <span class="num" data-lang="zh">第三节</span><span class="num" data-lang="en">Section 3</span>
       <h2 data-lang="zh">第三方共享</h2><h2 data-lang="en">Third-Party Sharing</h2>
       <p data-lang="zh">
-        本应用不与任何第三方共享用户数据，未接入任何第三方数据服务、分析平台或广告网络。
+        本应用不与任何第三方共享用户数据，也没有接入第三方数据服务、分析平台或广告网络。
       </p>
       <p data-lang="en">
-        This application does not share user data with any third party. It integrates no
+        This application shares no user data with third parties, nor does it integrate any
         third-party data services, analytics platforms, or advertising networks.
       </p>
     </div>
@@ -465,17 +454,15 @@
       <span class="num" data-lang="zh">第四节</span><span class="num" data-lang="en">Section 4</span>
       <h2 data-lang="zh">数据留存与删除</h2><h2 data-lang="en">Data Retention and Deletion</h2>
       <p data-lang="zh">
-        本应用仅在设备本地存储用户的应用内偏好设置，该数据保存于本应用的沙盒容器内。
-        用户可通过应用内的初始化功能清除全部设置与数据，亦可通过删除本应用一并清除。
-        由于本应用不收集数据，开发者未持有任何用户数据，因此不存在需要用户另行申请删除
-        或撤回授权的情形。
+        本应用仅在设备本地存储应用内的偏好设置，数据保存在本应用自身的沙盒容器中。用户
+        可以通过应用内的初始化功能清除全部设置，或直接删除本应用一并清除。开发者不持有
+        任何用户数据，因此也没有需要用户另行申请删除或撤回授权的情形。
       </p>
       <p data-lang="en">
-        The application stores only the user's in-app preferences, locally on the device and
-        within the application's own sandbox container. Users may erase all settings and data
-        through the in-app reset function, or by deleting the application. As the application
-        collects no data, the developers hold no user data, and there is accordingly no separate
-        deletion request or consent-withdrawal process for users to invoke.
+        The application stores only its own in-app preferences, locally on the device and within
+        its own sandbox container. Users can clear all settings through the in-app reset
+        function, or simply delete the application. As the developers hold no user data, there
+        is no separate deletion request or consent-withdrawal process to go through.
       </p>
     </div>
   </section>
@@ -592,11 +579,6 @@
 <footer>
   <p>© 2026 <span class="wordmark"><span class="w1">Pencil</span><span class="w2"> Monitor</span></span></p>
 </footer>
-
-<button class="totop" onclick="scrollTo({top:0,behavior:'smooth'})" aria-label="回到顶部">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
-       stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
-</button>
 
 </body>
 </html>
