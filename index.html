@@ -70,7 +70,7 @@
     background:var(--accent);transition:transform .42s var(--ease),width .42s var(--ease)}
 
   .stage{position:relative;background:radial-gradient(130% 62% at 50% 0%,var(--hero-a) 0%,var(--hero-b) 72%)}
-  html.js .stage{height:460vh}
+  html.js .stage{height:520vh}
   .stage-in{max-width:820px;margin:0 auto;padding:var(--bar) 24px 40px;text-align:center}
   html.js .stage-in{position:relative;position:sticky;top:0;height:100vh;height:100svh;
     display:grid;place-items:center;padding-top:calc(var(--bar) + var(--safe))}
@@ -207,7 +207,7 @@
   @media (max-width:640px){
     :root{--bar:56px}
     html.blur-on .pblur i{backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px)}
-    html.js .stage{height:410vh}
+    html.js .stage{height:520vh}
     .appicon{width:162px;height:162px;margin:-22px auto}
     main section{padding:40px 0;grid-template-columns:1fr;gap:14px}
     .card .bio{text-align:center}
@@ -272,6 +272,9 @@
 
     function seg(x,a,b){ return Math.min(1,Math.max(0,(x-a)/(b-a))); }
     var easeOut=function(t){ return 1-Math.pow(1-t,3); };
+    var easeInOut=function(t){
+      return t<.5 ? 4*t*t*t : 1-Math.pow(-2*t+2,3)/2;
+    };
 
     function setT(el,v){ if(el.__t!==v){ el.__t=v; el.style.transform=v; } }
     function setO(el,v){ if(el.__o!==v){ el.__o=v; el.style.opacity=v; } }
@@ -295,7 +298,7 @@
       return ns[0];
     }
 
-    var MA=.75, MB=.98, GE=.75, M=null, pmLive=null, ds=[];
+    var MA=.64, MB=.98, GE=.75, M=null, pmLive=null, ds=[];
 
     function clearPM(){
       pmz.style.height='';
@@ -364,12 +367,12 @@
       if(wantLive) return;
 
       var qr=seg(p,MA,MB),
-          q=easeOut(Math.min(1,qr/GE)), dq=easeOut(seg(qr,GE,1));
+          q=easeInOut(Math.min(1,qr/GE)), dq=easeOut(seg(qr,GE,1));
       pmz.style.height=L(M.chip.h,M.card.h,q).toFixed(1)+'px';
 
       for(var i=0;i<pms.length;i++){
         var el=pms[i], a=M.chip.items[i], b=M.card.items[i],
-            st=.46+i*.055, t=easeOut(seg(p,st,st+.10)),
+            t=easeOut(seg(p,.44,.55)),
             x=L(a.x,b.x,q)-M.bx, y=L(a.y,b.y,q),
             w=L(a.w,b.w,q), h=L(a.h,b.h,q);
 
@@ -431,21 +434,21 @@
     function frame(){
       var p=Math.min(1,Math.max(0,(scrollY-mTop)/mH));
 
-      var a=easeOut(seg(p,0,.46));
+      var a=easeOut(seg(p,0,.40));
       setT(icon,'translate3d(0,'+(-a*rise).toFixed(1)+'px,0) scale('+(1-a*.55).toFixed(3)+')');
 
-      var b=easeOut(seg(p,.08,.32));
+      var b=easeOut(seg(p,.07,.28));
       setT(gTitle,'translate3d(0,'+(-b*34).toFixed(1)+'px,0) scale('+(1-b*.12).toFixed(3)+')');
-      setO(gTitle,(1-seg(p,.10,.32)).toFixed(3));
+      setO(gTitle,(1-seg(p,.09,.28)).toFixed(3));
 
-      var c=easeOut(seg(p,.34,.60));
+      var c=easeOut(seg(p,.30,.52));
       setT(gClaim,'translate3d(0,'+((1-c)*30).toFixed(1)+'px,0)');
       setO(gClaim,c.toFixed(3));
 
       applyPM(p);
 
-      setO(date,seg(p,.66,.76).toFixed(3));
-      setO(hint,(1-seg(p,0,.14)).toFixed(3));
+      setO(date,seg(p,.54,.62).toFixed(3));
+      setO(hint,(1-seg(p,0,.12)).toFixed(3));
 
       var wantBlur=p>.985;
       if(wantBlur!==blurOn){ blurOn=wantBlur;
