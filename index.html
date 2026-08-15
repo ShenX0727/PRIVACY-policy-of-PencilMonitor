@@ -70,7 +70,7 @@
     background:var(--accent);transition:transform .42s var(--ease),width .42s var(--ease)}
 
   .stage{position:relative;background:radial-gradient(130% 62% at 50% 0%,var(--hero-a) 0%,var(--hero-b) 72%)}
-  html.js .stage{height:330vh}
+  html.js .stage{height:460vh}
   .stage-in{max-width:820px;margin:0 auto;padding:var(--bar) 24px 40px;text-align:center}
   html.js .stage-in{position:relative;position:sticky;top:0;height:100vh;height:100svh;
     display:grid;place-items:center;padding-top:calc(var(--bar) + var(--safe))}
@@ -205,7 +205,7 @@
   @media (max-width:640px){
     :root{--bar:56px}
     html.blur-on .pblur i{backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px)}
-    html.js .stage{height:300vh}
+    html.js .stage{height:410vh}
     .appicon{width:162px;height:162px;margin:-22px auto}
     main section{padding:40px 0;grid-template-columns:1fr;gap:14px}
     .card .bio{text-align:center}
@@ -468,6 +468,8 @@
       });
       addEventListener('orientationchange',function(){ setTimeout(function(){ measure(); frame(); },250); });
       addEventListener('load',function(){ measure(); frame(); });
+      matchMedia('(prefers-color-scheme:dark)')
+        .addEventListener('change',function(){ measure(); frame(); });
       if(document.fonts&&document.fonts.ready){
         document.fonts.ready.then(function(){ measure(); frame(); });
       }
