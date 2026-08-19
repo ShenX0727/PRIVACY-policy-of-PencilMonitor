@@ -16,12 +16,18 @@
     --ease:cubic-bezier(.22,.61,.36,1);
   }
   @media (prefers-color-scheme:dark){
-    :root{
+    :root:not([data-theme="light"]){
       --bg:#000; --fg:#f5f5f7; --muted:#a6a6ae; --faint:#83838f;
       --rule:#232135; --card:#101020; --card-line:#26243a;
       --accent:#a79dff; --bright:#8b81fc; --soft:#1c1934;
       --hero-a:#16142c; --hero-b:#000;
     }
+  }
+  :root[data-theme="dark"]{
+    --bg:#000; --fg:#f5f5f7; --muted:#a6a6ae; --faint:#83838f;
+    --rule:#232135; --card:#101020; --card-line:#26243a;
+    --accent:#a79dff; --bright:#8b81fc; --soft:#1c1934;
+    --hero-a:#16142c; --hero-b:#000;
   }
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
@@ -32,6 +38,49 @@
     transition:background-color .3s ease,color .3s ease}
   a{color:var(--accent);text-decoration:none}
   a:hover{text-decoration:underline}
+
+  .topctl{position:fixed;top:calc(14px + var(--safe));left:16px;right:16px;z-index:40;
+          display:flex;align-items:center;justify-content:space-between}
+  html.js .topctl{opacity:0;pointer-events:none}
+  .home{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;
+        color:var(--fg);background:color-mix(in srgb,var(--bg) 72%,transparent);
+        -webkit-backdrop-filter:saturate(180%) blur(12px);
+        backdrop-filter:saturate(180%) blur(12px);
+        border:1px solid var(--card-line);
+        transition:background .2s ease,color .2s ease,border-color .2s ease}
+  .home svg{width:18px;height:18px}
+  .home:hover{background:var(--soft);color:var(--accent);border-color:var(--soft);
+              text-decoration:none}
+  .gearwrap{position:relative}
+  .gear{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;
+        color:var(--fg);background:color-mix(in srgb,var(--bg) 72%,transparent);
+        -webkit-backdrop-filter:saturate(180%) blur(12px);
+        backdrop-filter:saturate(180%) blur(12px);
+        border:1px solid var(--card-line);cursor:pointer;appearance:none;padding:0;
+        transition:background .2s ease,color .2s ease,border-color .2s ease}
+  .gear svg{width:18px;height:18px;transition:transform .35s var(--ease)}
+  .gear:hover{background:var(--soft);color:var(--accent);border-color:var(--soft)}
+  .gear[aria-expanded="true"]{background:var(--soft);color:var(--accent);border-color:var(--soft)}
+  .gear[aria-expanded="true"] svg{transform:rotate(60deg)}
+  .prefs{position:absolute;top:44px;right:0;width:216px;padding:13px;text-align:left;
+         background:var(--bg);border:1px solid var(--card-line);border-radius:16px;
+         opacity:0;transform:translateY(-6px) scale(.97);transform-origin:100% 0;
+         pointer-events:none;
+         transition:opacity .2s var(--ease),transform .2s var(--ease)}
+  .prefs.open{opacity:1;transform:none;pointer-events:auto}
+  .prefs-t{margin:0 0 7px;font-size:11px;font-weight:700;letter-spacing:.09em;
+           text-transform:uppercase;color:var(--faint)}
+  .seg{display:flex;border:1px solid var(--card-line);border-radius:11px;overflow:hidden;
+       margin:0 0 14px}
+  .seg:last-child{margin-bottom:0}
+  .seg button{flex:1;appearance:none;border:0;background:none;cursor:pointer;
+    color:var(--muted);font:600 13px/1 inherit;padding:9px 4px;
+    display:flex;align-items:center;justify-content:center;gap:5px;
+    transition:background .2s ease,color .2s ease}
+  .seg button+button{border-left:1px solid var(--card-line)}
+  .seg button svg{width:14px;height:14px;flex:none}
+  .seg button:hover{color:var(--fg)}
+  .seg button[aria-pressed="true"]{background:var(--soft);color:var(--accent)}
 
   .wordmark{letter-spacing:-.01em;white-space:nowrap}
   .wordmark .w1{font-weight:700;font-style:italic}
@@ -122,6 +171,7 @@
     html.js .stage{height:auto}
     html.js .stage-in{position:static;height:auto}
     .reveal{opacity:1;transform:none;transition:none}
+    html.js .topctl{opacity:1;pointer-events:auto}
     .hint,.hint svg{display:none;animation:none}
     .pm-d{animation:none}
     *{transition-duration:.01ms!important}
@@ -137,18 +187,72 @@
 <script>
   document.documentElement.classList.add('js');
 
-  function applyLang(l){
+  function mark(sel,attr,value){
+    var bs=document.querySelectorAll(sel);
+    for(var i=0;i<bs.length;i++){ bs[i].setAttribute('aria-pressed',String(bs[i].getAttribute(attr)===value)); }
+  }
+  function applyLang(l,remember){
     var d=document.documentElement;
     d.setAttribute('data-active',l);
-    if(window.__pmSync) requestAnimationFrame(window.__pmSync);
     d.lang=(l==='zh')?'zh-Hans':'en';
+    if(remember){ try{ localStorage.setItem('pm-lang',l); }catch(e){} }
+    mark('.seg button[data-set]','data-set',l);
+    if(window.__pmSync) requestAnimationFrame(window.__pmSync);
   }
   (function(){
-    var zh=(navigator.language||'').toLowerCase().indexOf('zh')===0;
-    applyLang(zh?'zh':'en');
+    var l=null;
+    try{ var v=localStorage.getItem('pm-lang'); if(v==='zh'||v==='en'){ l=v; } }catch(e){}
+    if(!l){ l=(navigator.language||'').toLowerCase().indexOf('zh')===0?'zh':'en'; }
+    window.__pmLang=l;
+    applyLang(l,false);
+  })();
+
+  function applyTheme(t,remember){
+    var d=document.documentElement;
+    if(t==='auto'){ d.removeAttribute('data-theme'); } else { d.setAttribute('data-theme',t); }
+    if(remember){ try{ localStorage.setItem('pm-theme',t); }catch(e){} }
+    mark('.seg button[data-theme]','data-theme',t);
+    if(window.__pmSync) requestAnimationFrame(window.__pmSync);
+  }
+  (function(){
+    var t='auto';
+    try{ var v=localStorage.getItem('pm-theme'); if(v==='light'||v==='dark'||v==='auto'){ t=v; } }catch(e){}
+    window.__pmTheme=t;
+    applyTheme(t,false);
   })();
 
   document.addEventListener('DOMContentLoaded',function(){
+    applyLang(window.__pmLang,false);
+    applyTheme(window.__pmTheme,false);
+    document.querySelectorAll('.seg button[data-set]').forEach(function(b){
+      b.addEventListener('click',function(){
+        window.__pmLang=b.getAttribute('data-set');
+        applyLang(window.__pmLang,true);
+      });
+    });
+    document.querySelectorAll('.seg button[data-theme]').forEach(function(b){
+      b.addEventListener('click',function(){
+        window.__pmTheme=b.getAttribute('data-theme');
+        applyTheme(window.__pmTheme,true);
+      });
+    });
+
+    var gear=document.querySelector('.gear'), prefs=document.querySelector('.prefs');
+    if(gear&&prefs){
+      window.__pmPrefs=function(on){
+        prefs.classList.toggle('open',on);
+        gear.setAttribute('aria-expanded',String(on));
+      };
+      window.__pmPrefs(false);
+      gear.addEventListener('click',function(e){
+        e.stopPropagation();
+        window.__pmPrefs(gear.getAttribute('aria-expanded')!=='true');
+      });
+      prefs.addEventListener('click',function(e){ e.stopPropagation(); });
+      document.addEventListener('click',function(){ window.__pmPrefs(false); });
+      addEventListener('keydown',function(e){ if(e.key==='Escape'){ window.__pmPrefs(false); } });
+    }
+
     var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
 
     var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
@@ -160,6 +264,7 @@
         gTitle=document.querySelector('.g-title'),
         gClaim=document.querySelector('.g-claim'),
         date=document.querySelector('.date'),
+        topctl=document.querySelector('.topctl'),
         hint=document.querySelector('.hint');
 
     function seg(x,a,b){ return Math.min(1,Math.max(0,(x-a)/(b-a))); }
@@ -194,6 +299,13 @@
       setO(gClaim,c.toFixed(3));
 
       setO(date,c.toFixed(3));
+      setO(topctl,c.toFixed(3));
+      var pe=c>.05?'auto':'none';
+      if(topctl.__pe!==pe){
+        topctl.__pe=pe;
+        topctl.style.pointerEvents=pe;
+        if(pe==='none'&&window.__pmPrefs){ window.__pmPrefs(false); }
+      }
       setO(hint,(1-seg(p,0,.13)).toFixed(3));
 
     }
@@ -235,6 +347,23 @@
 <body>
 
 <div id="top"></div>
+
+<div class="topctl">
+  <a class="home" href="./" aria-label="返回主页 / Back to home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg></a>
+  <div class="gearwrap">
+    <button class="gear" type="button" aria-expanded="false" aria-label="设置 / Settings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></button>
+    <div class="prefs">
+      <p class="prefs-t"><span data-lang="zh">语言</span><span data-lang="en">Language</span></p>
+      <div class="seg">
+        <button type="button" data-set="zh">中文</button><button type="button" data-set="en">English</button>
+      </div>
+      <p class="prefs-t"><span data-lang="zh">外观</span><span data-lang="en">Appearance</span></p>
+      <div class="seg">
+        <button type="button" data-theme="light"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg><span data-lang="zh">白天</span><span data-lang="en">Light</span></button><button type="button" data-theme="dark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg><span data-lang="zh">黑夜</span><span data-lang="en">Dark</span></button><button type="button" data-theme="auto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 1 0 18z" fill="currentColor" stroke="none"/></svg><span data-lang="zh">自动</span><span data-lang="en">Auto</span></button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <div class="stage">
   <div class="stage-in">

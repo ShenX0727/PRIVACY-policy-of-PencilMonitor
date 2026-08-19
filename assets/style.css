@@ -8,13 +8,20 @@
   --ease:cubic-bezier(.22,.61,.36,1);
 }
 @media (prefers-color-scheme:dark){
-  :root{
+  :root:not([data-theme="light"]){
     --bg:#000; --fg:#f5f5f7; --muted:#a6a6ae; --faint:#83838f;
     --rule:#222134; --card:#0e0e1c; --card-line:#26243a;
     --accent:#a79dff; --bright:#8b81fc; --soft:#1c1934; --on-accent:#0d0b1c;
     --shadow:0 1px 2px rgba(0,0,0,.5), 0 10px 30px rgba(0,0,0,.45);
     --hero-a:#16142c; --hero-b:#000;
   }
+}
+:root[data-theme="dark"]{
+    --bg:#000; --fg:#f5f5f7; --muted:#a6a6ae; --faint:#83838f;
+    --rule:#222134; --card:#0e0e1c; --card-line:#26243a;
+    --accent:#a79dff; --bright:#8b81fc; --soft:#1c1934; --on-accent:#0d0b1c;
+    --shadow:0 1px 2px rgba(0,0,0,.5), 0 10px 30px rgba(0,0,0,.45);
+    --hero-a:#16142c; --hero-b:#000;
 }
 
 *{box-sizing:border-box}
@@ -40,23 +47,45 @@ html[data-active="en"] [data-lang="zh"]{display:none}
 .nav{position:fixed;top:calc(12px + var(--safe));left:14px;right:14px;z-index:30;
      display:flex;align-items:center;pointer-events:none}
 .nav > *{pointer-events:auto}
-.nav .langsw{margin-left:auto}
-.back{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;color:var(--fg);
-      background:color-mix(in srgb,var(--bg) 70%,transparent);
+.nav .gearwrap{margin-left:auto}
+.back{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;
+      color:var(--fg);background:color-mix(in srgb,var(--bg) 72%,transparent);
       -webkit-backdrop-filter:saturate(180%) blur(12px);
       backdrop-filter:saturate(180%) blur(12px);
       border:1px solid var(--card-line);
       transition:background .2s ease,color .2s ease,border-color .2s ease}
 .back svg{width:18px;height:18px}
 .back:hover{background:var(--soft);color:var(--accent);border-color:var(--soft);text-decoration:none}
-.langsw{display:inline-flex;border:1px solid var(--card-line);border-radius:980px;overflow:hidden;
-        background:color-mix(in srgb,var(--bg) 70%,transparent);
-        -webkit-backdrop-filter:saturate(180%) blur(12px);
-        backdrop-filter:saturate(180%) blur(12px)}
-.langsw button{appearance:none;border:0;background:none;cursor:pointer;color:var(--muted);
-  font:600 12px/1 inherit;padding:7px 11px;transition:background .2s ease,color .2s ease}
-.langsw button+button{border-left:1px solid var(--card-line)}
-.langsw button[aria-pressed="true"]{background:var(--soft);color:var(--accent)}
+.gearwrap{position:relative}
+.gear{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;
+      color:var(--fg);background:color-mix(in srgb,var(--bg) 72%,transparent);
+      -webkit-backdrop-filter:saturate(180%) blur(12px);
+      backdrop-filter:saturate(180%) blur(12px);
+      border:1px solid var(--card-line);cursor:pointer;appearance:none;padding:0;
+      transition:background .2s ease,color .2s ease,border-color .2s ease}
+.gear svg{width:18px;height:18px;transition:transform .35s var(--ease)}
+.gear:hover{background:var(--soft);color:var(--accent);border-color:var(--soft)}
+.gear[aria-expanded="true"]{background:var(--soft);color:var(--accent);border-color:var(--soft)}
+.gear[aria-expanded="true"] svg{transform:rotate(60deg)}
+.prefs{position:absolute;top:44px;right:0;width:216px;padding:13px;text-align:left;
+       background:var(--bg);border:1px solid var(--card-line);border-radius:16px;
+       opacity:0;transform:translateY(-6px) scale(.97);transform-origin:100% 0;
+       pointer-events:none;
+       transition:opacity .2s var(--ease),transform .2s var(--ease)}
+.prefs.open{opacity:1;transform:none;pointer-events:auto}
+.prefs-t{margin:0 0 7px;font-size:11px;font-weight:700;letter-spacing:.09em;
+         text-transform:uppercase;color:var(--faint)}
+.seg{display:flex;border:1px solid var(--card-line);border-radius:11px;overflow:hidden;
+     margin:0 0 14px}
+.seg:last-child{margin-bottom:0}
+.seg button{flex:1;appearance:none;border:0;background:none;cursor:pointer;
+  color:var(--muted);font:600 13px/1 inherit;padding:9px 4px;
+  display:flex;align-items:center;justify-content:center;gap:5px;
+  transition:background .2s ease,color .2s ease}
+.seg button+button{border-left:1px solid var(--card-line)}
+.seg button svg{width:14px;height:14px;flex:none}
+.seg button:hover{color:var(--fg)}
+.seg button[aria-pressed="true"]{background:var(--soft);color:var(--accent)}
 
 .hero{position:relative;text-align:center;
       background:radial-gradient(130% 62% at 50% 0%,var(--hero-a) 0%,var(--hero-b) 72%)}
