@@ -38,7 +38,7 @@
   .wordmark .w2{font-weight:400;color:var(--muted)}
 
   .stage{position:relative;background:radial-gradient(130% 62% at 50% 0%,var(--hero-a) 0%,var(--hero-b) 72%)}
-  html.js .stage{height:300vh}
+  html.js .stage{height:180vh}
   .stage-in{max-width:820px;margin:0 auto;padding:var(--bar) 24px 40px;text-align:center}
   html.js .stage-in{position:relative;position:sticky;top:0;height:100vh;height:100svh;
     display:grid;place-items:center;padding-top:calc(var(--bar) + var(--safe))}
@@ -128,7 +128,7 @@
   }
   @media (max-width:640px){
     :root{--bar:56px}
-    html.js .stage{height:300vh}
+    html.js .stage{height:180vh}
     .appicon{width:162px;height:162px;margin:-22px auto}
     main section{padding:40px 0;grid-template-columns:1fr;gap:14px}
   }
@@ -182,19 +182,19 @@
     function frame(){
       var p=Math.min(1,Math.max(0,(scrollY-mTop)/mH));
 
-      var a=easeOut(seg(p,0,.32));
+      var a=easeOut(seg(p,0,.40));
       setT(icon,'translate3d(0,'+(-a*rise).toFixed(1)+'px,0) scale('+(1-a*.55).toFixed(3)+')');
 
-      var b=easeOut(seg(p,.04,.20));
+      var b=easeOut(seg(p,.05,.26));
       setT(gTitle,'translate3d(0,'+(-b*34).toFixed(1)+'px,0) scale('+(1-b*.12).toFixed(3)+')');
-      setO(gTitle,(1-seg(p,.05,.18)).toFixed(3));
+      setO(gTitle,(1-seg(p,.06,.24)).toFixed(3));
 
-      var c=easeOut(seg(p,.36,.56));
+      var c=easeOut(seg(p,.44,.74));
       setT(gClaim,'translate3d(0,'+((1-c)*30).toFixed(1)+'px,0)');
       setO(gClaim,c.toFixed(3));
 
       setO(date,c.toFixed(3));
-      setO(hint,(1-seg(p,0,.10)).toFixed(3));
+      setO(hint,(1-seg(p,0,.13)).toFixed(3));
 
     }
 
