@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Pencil Monitor</title>
-<meta name="description" content="Pencil Monitor —— iPadOS 上的 Apple Pencil 传感器诊断工具。实时读取压力、倾角、方位角、侧旋与悬停距离，并导出设备健康报告。">
+<meta name="description" content="Pencil Monitor —— iPadOS 上的 Apple Pencil 传感器诊断工具。压力。倾角。方位角。侧旋。悬停距离。全部实时呈现。">
 <link rel="icon" href="assets/favicon.png">
 <link rel="stylesheet" href="assets/style.css">
 <script src="assets/app.js"></script>
@@ -32,17 +32,14 @@
     <img class="appicon" src="assets/icon.webp" alt="Pencil Monitor">
     <h1 class="wordmark"><span class="w1">Pencil</span><span class="w2"> Monitor</span></h1>
     <p class="claim">
-      <span data-lang="zh">看清 Apple Pencil 的每一个信号</span>
-      <span data-lang="en">See every signal your Apple Pencil sends</span>
+      <span data-lang="zh">每一笔。纤毫毕现。</span>
+      <span data-lang="en">Every stroke. Down to the last detail.</span>
     </p>
-    <p class="sub" data-lang="zh">
-      实时读取压力、倾角、方位角、侧旋与悬停距离，逐项验证各通道能否覆盖完整量程，
-      并导出一份设备健康报告。所有数值都来自系统的真实事件流。
-    </p>
+    <p class="sub" data-lang="zh">压力。倾角。方位角。侧旋。悬停距离。全部实时呈现，直接取自系统事件流。每个通道能否走满量程，测一次便知。不推算，不估计。</p>
     <p class="sub" data-lang="en">
-      Read pressure, altitude, azimuth, barrel roll and hover distance in real time, check
-      whether each channel covers its full range, and export a device health report. Every
-      number comes from the system's real event stream.
+      Pressure. Tilt. Azimuth. Barrel roll. Hover distance. All of it live, straight from the
+      system's event stream. Run the tests and find out whether every channel goes the full
+      distance. No guesswork. No estimates.
     </p>
 
     <div class="chips">
@@ -52,52 +49,26 @@
       </span>
       <span class="chip">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 21h8"/><path d="m15 5 4 4"/><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/></svg>
-        <span data-lang="zh">支持全系 Apple Pencil</span><span data-lang="en">Every Apple Pencil</span>
+        <span data-lang="zh">为 Apple Pencil 而生</span><span data-lang="en">Built for Apple Pencil</span>
       </span>
       <span class="chip">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>
-        <span data-lang="zh">不收集任何数据</span><span data-lang="en">No data collected</span>
+        <span data-lang="zh">数据留在设备上</span><span data-lang="en">Stays on your iPad</span>
       </span>
       <span class="chip">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></svg>
-        <span data-lang="zh">多语言适配</span><span data-lang="en">Multi-language support</span>
+        <span data-lang="zh">多语言适配</span><span data-lang="en">Multiple languages</span>
       </span>
     </div>
 
     <div class="cta main">
       <a class="store-badge" id="app-store-link" target="_blank" rel="noopener">
-        <picture data-lang="zh">
-          <source srcset="assets/appstore-zh-white.svg" media="(prefers-color-scheme:dark)">
-          <img src="assets/appstore-zh-black.svg" width="108.85157" height="40" alt="从 App Store 下载">
-        </picture>
-        <picture data-lang="en">
-          <source srcset="assets/appstore-en-white.svg" media="(prefers-color-scheme:dark)">
-          <img src="assets/appstore-en-black.svg" width="119.66407" height="40" alt="Download on the App Store">
-        </picture>
-      </a>
-      <a class="btn" href="privacy.html">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>
-        <span data-lang="zh">隐私政策</span><span data-lang="en">Privacy Policy</span>
-      </a>
-      <a class="btn" href="support.html">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 17h.01"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><circle cx="12" cy="12" r="10"/></svg>
-        <span data-lang="zh">帮助与反馈</span><span data-lang="en">Help &amp; Feedback</span>
-      </a>
-    </div>
-  </div>
-</div>
-
-<main class="wide">
-
-  <section class="head reveal">
-    <p class="eyebrow" data-lang="zh">功能</p><p class="eyebrow" data-lang="en">Features</p>
-    <h2 data-lang="zh">笔能说的，他能读的</h2>
-    <h2 data-lang="en">Everything the pencil reports, read out loud</h2>
-    <p class="lede" data-lang="zh">
-      先看状态，再做体检，画板验证，一气呵成。
-    </p>
+        <picture data-lang="zh"><source srcset="assets/appstore-zh-white.svg" media="(prefers-color-scheme:dark)"> <img src="assets/appstore-zh-black.svg" width="108.85157" height="40" alt="从 App Store 下载"> </picture> <picture data-lang="en"> <source srcset="assets/appstore-en-white.svg" media="(prefers-color-scheme:dark)"> <img src="assets/appstore-en-black.svg" width="119.66407" height="40" alt="Download on the App Store"> </picture> </a> <a class="btn" href="privacy.html"> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg> <span data-lang="zh">隐私政策</span><span data-lang="en">Privacy Policy</span> </a> <a class="btn" href="support.html"> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 17h.01"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><circle cx="12" cy="12" r="10"/></svg> <span data-lang="zh">帮助与反馈</span><span data-lang="en">Help &amp; Feedback</span> </a> </div> </div> </div>  <main class="wide">  <section class="head reveal"> <p class="eyebrow" data-lang="zh">功能</p><p class="eyebrow" data-lang="en">Features</p>
+    <h2 data-lang="zh">笔知道的一切。现在你也知道。</h2>
+    <h2 data-lang="en">Everything your pencil knows. Now you know it too.</h2>
+    <p class="lede" data-lang="zh">四个标签页，一条清晰的路径。先看状态。再做体检。然后在画板和实时数据里，亲眼验证。</p>
     <p class="lede" data-lang="en">
-      Four tabs cover the whole flow: check the status, run the tests, then verify it yourself on
+      Four tabs. One clear path. Check the status. Run the tests. Then see it for yourself, on
       the canvas and in the live readouts.
     </p>
 
@@ -105,79 +76,76 @@
       <div class="f">
         <span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h3l2-7 4 14 2-7h7"/></svg></span>
         <h3 data-lang="zh">概览</h3><h3 data-lang="en">Dashboard</h3>
-        <p data-lang="zh">连接状态、能力清单、实时读数，3D视图。各项功能，尽在掌握。</p>
-        <p data-lang="en">Connection status for the iPad and the pencil, a capability list, four live readouts (pressure, tilt, roll, hover distance) and a 3D pose view that follows the pencil.</p>
+        <p data-lang="zh">连接状态。能力清单。四项实时读数。还有一支跟着你动的 3D 笔。一屏之内，了然于心。</p>
+        <p data-lang="en">Connection status. A capability list. Four live readouts. And a 3D pencil that moves exactly as you do. One screen tells you where things stand.</p>
       </div>
       <div class="f">
         <span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 17 2 2 4-4"/><path d="m3 7 2 2 4-4"/><path d="M13 6h8"/><path d="M13 12h8"/><path d="M13 18h8"/></svg></span>
         <h3 data-lang="zh">硬件体检</h3><h3 data-lang="en">Hardware tests</h3>
-        <p data-lang="zh">悬停截止距离与光标偏移、压力 / 倾角 / 旋转三通道的量程覆盖评级、笔身触觉反馈，以及挤压与双击的阶段与时长。</p>
-        <p data-lang="en">Hover cutoff distance and cursor offset, range-coverage grades for the pressure, tilt and roll channels, barrel haptics, plus the phases and duration of squeeze and double-tap.</p>
+        <p data-lang="zh">悬停截止距离与光标偏移。三个通道的量程覆盖评级。笔身触觉。每一次挤压与双击的时长。一轮跑完，心里就有数了。</p>
+        <p data-lang="en">Hover cutoff and cursor offset. Range coverage across all three channels. Barrel haptics. Every squeeze and double-tap, timed. One pass, and you know where you stand.</p>
       </div>
       <div class="f">
         <span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 21h8"/><path d="m15 5 4 4"/><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/></svg></span>
         <h3 data-lang="zh">画板</h3><h3 data-lang="en">Canvas</h3>
-        <p data-lang="zh">PencilKit 画布与官方工具盘，四种纸张纹理。悬停时在笔尖下渲染整支笔的剪影投影，近实远虚。支持撤销、笔迹统计与导出。</p>
-        <p data-lang="en">A PencilKit canvas with Apple's own tool picker and four paper textures. On hover it casts a silhouette of the whole pencil under the tip — sharp up close, soft further away. Undo, stroke stats and export included.</p>
+        <p data-lang="zh">PencilKit 画布，配官方工具盘与四种纸张纹理。笔悬在纸面上方，整支笔的影子随之落下。近处清晰，远处虚化。</p>
+        <p data-lang="en">A PencilKit canvas, with Apple's own tool picker and four paper textures. Hold the pencil above the page, and its whole silhouette falls onto the paper. Crisp up close. Soft further away.</p>
       </div>
       <div class="f">
         <span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h3.5l2.5-6 4 12 2.5-6H22"/><path d="M2 20h20"/></svg></span>
         <h3 data-lang="zh">实时数据</h3><h3 data-lang="en">Live data</h3>
-        <p data-lang="zh">示波式读数面板：屏幕坐标、按压力度（0–255）、倾角与方位角（弧度）、侧旋指针，逐帧跟随。</p>
-        <p data-lang="en">An oscilloscope-style panel: screen coordinates, force (0–255), altitude and azimuth in radians, and a barrel-roll dial — updated every frame.</p>
+        <p data-lang="zh">一块示波器式的读数面板。屏幕坐标、按压力度 0–255、倾角与方位角、侧旋指针。逐帧跟随，一拍不落。</p>
+        <p data-lang="en">An oscilloscope for your pencil. Coordinates, force from 0 to 255, altitude and azimuth, and a barrel-roll dial. Frame by frame. Nothing skipped.</p>
       </div>
       <div class="f">
         <span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg></span>
         <h3 data-lang="zh">设备健康报告</h3><h3 data-lang="en">Health report</h3>
-        <p data-lang="zh">把设备信息与体检结果汇总成一份报告，可导出文本或 PDF，用系统分享发送给需要的人。</p>
-        <p data-lang="en">Device details and test results collected into one report, exportable as text or PDF and sent through the system share sheet.</p>
+        <p data-lang="zh">设备信息与体检结果，汇成一份报告。导出文本或 PDF，想发给谁就发给谁。</p>
+        <p data-lang="en">Device details and test results, gathered into one report. Export it as text or PDF. Share it however you like.</p>
       </div>
       <div class="f">
         <span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a1 1 0 0 1 0-20 10 9 0 0 1 10 9 5 5 0 0 1-5 5h-2.25a1.75 1.75 0 0 0-1.4 2.8l.3.4a1.75 1.75 0 0 1-1.4 2.8z"/><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/></svg></span>
         <h3 data-lang="zh">外观与语言</h3><h3 data-lang="en">Look and language</h3>
-        <p data-lang="zh">八款 App 图标、两套主题配色、深浅跟随或手动指定，中英双语切换即时生效。</p>
-        <p data-lang="en">Eight app icons, two colour themes, light and dark on system or by hand, and an instant switch between 中文 and English.</p>
+        <p data-lang="zh">八款 App 图标。两套主题配色。深浅跟随系统，或由你决定。切换语言，即刻生效。</p>
+        <p data-lang="en">Eight app icons. Two colour themes. Light and dark, on system or by hand. And a language switch that takes effect the moment you tap it.</p>
       </div>
     </div>
   </section>
 
   <section class="head reveal">
     <p class="eyebrow" data-lang="zh">系统要求</p><p class="eyebrow" data-lang="en">Requirements</p>
-    <h2 data-lang="zh">跑起来需要什么</h2>
-    <h2 data-lang="en">What you need</h2>
+    <h2 data-lang="zh">用起来，需要这些。</h2>
+    <h2 data-lang="en">What you'll need.</h2>
     <div class="spec">
       <div>
         <b data-lang="zh">系统</b><b data-lang="en">System</b>
-        <span data-lang="zh">iPadOS 26.0 或更高</span><span data-lang="en">iPadOS 26.0 or later</span>
+        <span data-lang="zh">iPadOS 26.0 或更高版本</span><span data-lang="en">iPadOS 26.0 or later</span>
       </div>
       <div>
         <b data-lang="zh">设备</b><b data-lang="en">Device</b>
-        <span data-lang="zh">仅 iPad</span><span data-lang="en">iPad only</span>
+        <span data-lang="zh">iPad</span><span data-lang="en">iPad</span>
       </div>
       <div>
         <b data-lang="zh">硬件</b><b data-lang="en">Hardware</b>
-        <span data-lang="zh">传感器功能需要 Apple Pencil，部分体检项目需要特定型号</span>
-        <span data-lang="en">Sensor features need an Apple Pencil; some tests need a specific model</span>
+        <span data-lang="zh">传感器功能需要 Apple Pencil。部分体检项目需要特定型号。</span>
+        <span data-lang="en">An Apple Pencil for the sensor features. Some tests need a specific model.</span>
       </div>
       <div>
         <b data-lang="zh">模拟器</b><b data-lang="en">Simulator</b>
-        <span data-lang="zh">无法模拟 Apple Pencil，也没有触觉反馈，需在真机验证</span>
-        <span data-lang="en">Cannot emulate Apple Pencil or haptics — verify on real hardware</span>
+        <span data-lang="zh">模拟器上没有 Apple Pencil，也没有触觉反馈。这些，得在真机上看。</span>
+        <span data-lang="en">No Apple Pencil there, and no haptics. These have to be seen on real hardware.</span>
       </div>
     </div>
   </section>
 
   <section class="head reveal">
     <p class="eyebrow" data-lang="zh">隐私</p><p class="eyebrow" data-lang="en">Privacy</p>
-    <h2 data-lang="zh">数据一条都不上传</h2>
-    <h2 data-lang="en">Nothing ever leaves the device</h2>
-    <p class="lede" data-lang="zh">
-      应用不含网络传输功能，不设账号，未接入统计分析、崩溃上报或广告组件，也不跨应用追踪。
-      所有读数都在本机处理与显示。
-    </p>
+    <h2 data-lang="zh">你的数据，从不离开这台设备。</h2>
+    <h2 data-lang="en">Your data never leaves your iPad. Ever.</h2>
+    <p class="lede" data-lang="zh">没有网络传输代码。没有账号。没有统计分析、崩溃上报和广告，也不跨应用追踪。所有读数，只在这台设备上处理，只在这台设备上显示。</p>
     <p class="lede" data-lang="en">
-      There is no network code, no account system, no analytics, no crash reporting, no ads and no
-      cross-app tracking. Every reading is processed and shown on the device itself.
+      No networking code. No account. No analytics, no crash reporting, no ads, no cross-app
+      tracking. Every reading is processed and shown right here, and nowhere else.
     </p>
     <div class="cta" style="justify-content:flex-start">
       <a class="btn" href="privacy.html">
@@ -188,16 +156,13 @@
 
   <section class="head reveal">
     <p class="eyebrow" data-lang="zh">帮助与反馈</p><p class="eyebrow" data-lang="en">Help &amp; Feedback</p>
-    <h2 data-lang="zh">遇到问题，写封邮件就好</h2>
-    <h2 data-lang="en">Stuck? Just send an email</h2>
-    <p class="lede" data-lang="zh">
-      常见问题都整理在支持页面上：检测不到笔、型号认错、体检项目找不到、报告怎么导出。
-      没找到答案就写信给我们，中文或英文都可以。
-    </p>
+    <h2 data-lang="zh">有问题？随时找我们。</h2>
+    <h2 data-lang="en">Questions? We're here.</h2>
+    <p class="lede" data-lang="zh">常见的都写在支持页上：笔检测不到、型号认错、体检项目找不到、报告怎么导出。没找到答案，写信给我们就好。中文英文都欢迎。</p>
     <p class="lede" data-lang="en">
-      The common ones are answered on the support page: the pencil is not detected, the model is
-      wrong, a test is missing, how to export the report. If the answer is not there, write to us —
-      in English or Chinese.
+      The common ones are answered on the support page. The pencil isn't detected. The model is
+      wrong. A test is missing. How to export the report. If yours isn't there, write to us. In
+      English or Chinese.
     </p>
     <div class="cta" style="justify-content:flex-start">
       <a class="btn solid" href="support.html">
@@ -214,10 +179,7 @@
     <div class="reveal">
       <h2 data-lang="zh">关于开发者</h2>
       <h2 data-lang="en">About the developers</h2>
-      <p class="lede" data-lang="zh">
-        <span class="wordmark"><span class="w1">Pencil</span><span class="w2"> Monitor</span></span>
-        由两名大学生开发者共同开发。两人分工不同但投入相当，应用的每一个版本都由双方共同完成。
-      </p>
+      <p class="lede" data-lang="zh"><span class="wordmark"><span class="w1">Pencil</span><span class="w2"> Monitor</span></span>由两名大学生开发者共同开发。两人分工不同但投入相当，应用的每一个版本都由双方共同完成。</p>
       <p class="lede" data-lang="en">
         <span class="wordmark"><span class="w1">Pencil</span><span class="w2"> Monitor</span></span>
         is built by two university students. They work on different parts of the app but contribute
@@ -230,10 +192,7 @@
         <img src="assets/dev-shenx.jpg" alt="ShenX0727">
         <p class="nm">ShenX0727</p>
         <p class="role" data-lang="zh">开发者</p><p class="role" data-lang="en">Developer</p>
-        <p class="bio" data-lang="zh">
-          项目发起人。主要参与 Apple Pencil 传感器监测、画板与实时 3D 姿态显示，
-          以及硬件测试页面的开发，并负责应用的上架合规工作。
-        </p>
+        <p class="bio" data-lang="zh">项目发起人。主要参与 Apple Pencil 传感器监测、画板与实时 3D 姿态显示，以及硬件测试页面的开发，并负责应用的上架合规工作。</p>
         <p class="bio" data-lang="en">
           Started the project. Works mainly on Apple Pencil sensor monitoring, the drawing canvas
           and real-time 3D pose view, and the hardware test screens; also handles App Store
@@ -254,10 +213,7 @@
         <img src="assets/dev-novice.png" alt="NoviceSausage">
         <p class="nm">NoviceSausage</p>
         <p class="role" data-lang="zh">开发者</p><p class="role" data-lang="en">Developer</p>
-        <p class="bio" data-lang="zh">
-          主要参与首次启动欢迎页、设备健康报告的 PDF 导出、Apple Pencil 型号判断逻辑，
-          以及应用外观切换与全量英文本地化。
-        </p>
+        <p class="bio" data-lang="zh">主要参与首次启动欢迎页、设备健康报告的 PDF 导出、Apple Pencil 型号判断逻辑，以及应用外观切换与全量英文本地化。</p>
         <p class="bio" data-lang="en">
           Works mainly on the first-launch onboarding flow, PDF export of the device health report,
           Apple Pencil model detection, appearance switching, and the full English localization.

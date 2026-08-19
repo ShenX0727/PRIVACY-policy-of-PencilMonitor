@@ -104,6 +104,7 @@
      letter-spacing:-.028em;font-weight:700}
   .claim{margin:0;font-weight:700;letter-spacing:-.02em;color:var(--accent);
          font-size:clamp(20px,3.4vw,34px);line-height:1.25}
+  html[data-active="zh"] .claim{transform:translateX(.2em)}
   .pmz{position:relative;margin:26px 0 0;width:100vw;margin-inline:calc(50% - 50vw);
        display:flex;gap:14px;justify-content:safe center;text-align:left;
        overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;
@@ -378,8 +379,8 @@
 
      <div class="grp g-claim">
       <p class="claim">
-      <span data-lang="zh">我们承诺，不收集任何用户数据</span>
-      <span data-lang="en">We promise never to collect your data</span>
+      <span data-lang="zh">你的数据，我们一条都不收。</span>
+      <span data-lang="en">We don't collect your data. Not one byte.</span>
     </p>
 
     <div class="pmz is-chip">
@@ -442,16 +443,12 @@
     </div>
     <div>
       <h2 data-lang="zh">数据收集</h2><h2 data-lang="en">Data Collection</h2>
-      <p data-lang="zh">
-        本应用<strong>不收集任何用户数据</strong>，也没有网络传输功能——不会向开发者或
-        任何第三方的服务器发送数据。它不设账号体系，无需注册或登录，未接入统计分析、
-        崩溃上报或广告组件，也不会跨应用或跨网站追踪用户。
-      </p>
+      <p data-lang="zh">本应用<strong>不收集任何用户数据</strong>。它没有网络传输功能，不会向开发者或任何第三方的服务器发送数据。没有账号体系，无需注册或登录。没有统计分析，没有崩溃上报，没有广告组件。也不会跨应用或跨网站追踪你。</p>
       <p data-lang="en">
-        This application <strong>collects no user data</strong> and includes no network
-        transmission — nothing is ever sent to the developers' servers or anyone else's. It has
-        no account system, requires no sign-in, and integrates no analytics, crash reporting, or
-        advertising components; nor does it track users across other apps or websites.
+        This application <strong>collects no user data</strong>. It has no network transmission
+        code, so nothing is ever sent to the developers' servers or anyone else's. There is no
+        account system, and no sign-up or sign-in. No analytics. No crash reporting. No
+        advertising components. And no tracking across other apps or websites.
       </p>
     </div>
   </section>
@@ -464,17 +461,13 @@
     </div>
     <div>
       <h2 data-lang="zh">本地处理</h2><h2 data-lang="en">Local Processing</h2>
-      <p data-lang="zh">
-        设备检测功能会读取本机的硬件与系统信息，以及 Apple Pencil 的传感器数据；这些信息
-        <strong>仅在设备本地处理与显示，不会离开设备</strong>。用户可以导出检测报告，并通过
-        系统分享功能发送给他人——这一步完全由用户发起和控制，本应用不参与传输过程。
-      </p>
+      <p data-lang="zh">设备检测功能会读取本机的硬件与系统信息，以及 Apple Pencil 的传感器数据。这些信息<strong>只在本机处理与显示，不会离开设备</strong>。你可以导出检测报告，用系统分享功能发给他人。这一步完全由你发起，由你控制，本应用不参与传输。</p>
       <p data-lang="en">
         The diagnostic features read hardware and system information from the device, along with
-        sensor data from Apple Pencil; this information is
-        <strong>processed and displayed only on the device, and never leaves it</strong>. Users
-        may export a diagnostic report and send it via the system share sheet — that step is
-        entirely user-initiated, and the application takes no part in the transfer.
+        sensor data from Apple Pencil. That information is
+        <strong>processed and displayed on the device only. It never leaves</strong>. You can
+        export a diagnostic report and send it with the system share sheet. That step is yours to
+        start and yours to control. The application takes no part in the transfer.
       </p>
     </div>
   </section>
@@ -486,12 +479,10 @@
     </div>
     <div>
       <h2 data-lang="zh">第三方共享</h2><h2 data-lang="en">Third-Party Sharing</h2>
-      <p data-lang="zh">
-        本应用不与任何第三方共享用户数据，也没有接入第三方数据服务、分析平台或广告网络。
-      </p>
+      <p data-lang="zh">本应用不与任何第三方共享用户数据。也没有接入第三方数据服务、分析平台或广告网络。</p>
       <p data-lang="en">
-        This application shares no user data with third parties, nor does it integrate any
-        third-party data services, analytics platforms, or advertising networks.
+        This application shares no user data with third parties. It integrates no third-party
+        data services, no analytics platforms, and no advertising networks.
       </p>
     </div>
   </section>
@@ -505,16 +496,12 @@
     </div>
     <div>
       <h2 data-lang="zh">数据留存与删除</h2><h2 data-lang="en">Data Retention and Deletion</h2>
-      <p data-lang="zh">
-        本应用仅在设备本地存储应用内的偏好设置，数据保存在本应用自身的沙盒容器中。用户
-        可以通过应用内的初始化功能清除全部设置，或直接删除本应用一并清除。开发者不持有
-        任何用户数据，因此也没有需要用户另行申请删除或撤回授权的情形。
-      </p>
+      <p data-lang="zh">本应用只在本机存储应用内的偏好设置，数据保存在自身的沙盒容器中。你可以用应用内的初始化功能清除全部设置，也可以直接删除本应用，数据随之一并清除。开发者不持有任何用户数据，所以没有需要另行申请删除或撤回授权的情形。</p>
       <p data-lang="en">
-        The application stores only its own in-app preferences, locally on the device and within
-        its own sandbox container. Users can clear all settings through the in-app reset
-        function, or simply delete the application. As the developers hold no user data, there
-        is no separate deletion request or consent-withdrawal process to go through.
+        The application stores only its own in-app preferences, on the device and inside its own
+        sandbox container. You can clear every setting with the in-app reset, or simply delete the
+        application and it all goes with it. The developers hold no user data, so there is no
+        separate deletion request and no consent to withdraw.
       </p>
     </div>
   </section>
@@ -527,10 +514,10 @@
     </div>
     <div>
       <h2 data-lang="zh">政策更新</h2><h2 data-lang="en">Changes to This Policy</h2>
-      <p data-lang="zh">本政策如有修订，将在本页面公布并更新上方的修改日期。</p>
+      <p data-lang="zh">本政策如有修订，将在本页面公布，并更新上方的修改日期。</p>
       <p data-lang="en">
-        Any revision to this policy will be published on this page, and the updated date above
-        will be updated accordingly.
+        Any revision to this policy will be published on this page, and the date above will be
+        updated with it.
       </p>
     </div>
   </section>
@@ -543,12 +530,9 @@
     </div>
     <div>
       <h2 data-lang="zh">联系方式</h2><h2 data-lang="en">Contact</h2>
-      <p data-lang="zh">
-        如对本隐私政策有任何疑问，请通过电子邮件联系：
-        <a href="mailto:sheri918303284@163.com"><code>sheri918303284@163.com</code></a>
-      </p>
+      <p data-lang="zh">对本隐私政策有任何疑问，写邮件给我们：<a href="mailto:sheri918303284@163.com"><code>sheri918303284@163.com</code></a></p>
       <p data-lang="en">
-        For any questions regarding this privacy policy, please contact us by email at
+        Questions about this privacy policy? Write to us at
         <a href="mailto:sheri918303284@163.com"><code>sheri918303284@163.com</code></a>
       </p>
     </div>
