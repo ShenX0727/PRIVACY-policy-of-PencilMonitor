@@ -1,6 +1,6 @@
-/* Pencil Monitor site — shared behaviour.
-   Loaded blocking in <head> so the language is set before first paint. */
 (function () {
+  var APP_STORE_URL = '';
+
   var KEY = 'pm-lang';
   var root = document.documentElement;
 
@@ -31,7 +31,18 @@
       b.addEventListener('click', function () { apply(b.dataset.set, true); });
     });
 
-    /* top bar picks up a hairline once the page has scrolled */
+    var store = document.getElementById('app-store-link');
+    if (store) {
+      if (APP_STORE_URL) {
+        store.href = APP_STORE_URL;
+        store.removeAttribute('aria-disabled');
+      } else {
+        store.removeAttribute('href');
+        store.setAttribute('aria-disabled', 'true');
+        store.addEventListener('click', function (e) { e.preventDefault(); });
+      }
+    }
+
     var bar = document.querySelector('.bar');
     if (bar) {
       var tick = function () { bar.classList.toggle('stuck', window.scrollY > 4); };
@@ -39,7 +50,6 @@
       addEventListener('scroll', tick, { passive: true });
     }
 
-    /* FAQ rows: one click toggles, height animates via grid-template-rows */
     document.querySelectorAll('.qa .q').forEach(function (q) {
       q.setAttribute('aria-expanded', 'false');
       q.addEventListener('click', function () {
@@ -49,7 +59,6 @@
       });
     });
 
-    /* deep link: /support.html#hover-test opens and scrolls to that row */
     function openHash() {
       var id = location.hash.slice(1);
       if (!id) return;
@@ -57,12 +66,13 @@
       if (!qa || !qa.classList.contains('qa')) return;
       qa.classList.add('open');
       qa.querySelector('.q').setAttribute('aria-expanded', 'true');
+      var sec = qa.closest('.reveal');
+      if (sec) sec.classList.add('in');
       qa.scrollIntoView({ block: 'center' });
     }
     openHash();
     addEventListener('hashchange', openHash);
 
-    /* fade sections in on first view */
     if (!matchMedia('(prefers-reduced-motion:reduce)').matches && 'IntersectionObserver' in window) {
       var io = new IntersectionObserver(function (es) {
         es.forEach(function (en) {

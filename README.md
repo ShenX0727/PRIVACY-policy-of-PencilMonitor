@@ -3,18 +3,40 @@
 # Pencil Monitor — Website
 
 The public site for Pencil Monitor: a home page, the privacy policy, and the
-support page with the FAQ. Static HTML, no build step, served by GitHub Pages.
+help & feedback page with the FAQ. Static HTML, no build step, served by GitHub Pages.
 
 | Page | File | URL |
 |---|---|---|
 | Home | `index.html` | `https://shenx0727.github.io/PRIVACY-policy-of-PencilMonitor/` |
 | Privacy policy | `privacy.html` | `.../privacy.html` |
-| Support | `support.html` | `.../support.html` |
+| Help &amp; Feedback | `support.html` | `.../support.html` |
 
 `assets/` holds the shared stylesheet, the shared script, and the images
 (app icon, favicon, developer avatars). Every page is bilingual: it picks a
 language from the browser and can be switched in the top-right corner, which is
 remembered in `localStorage`.
+
+The home page carries three buttons: **App Store**, **Privacy Policy** and
+**Help & Feedback**.
+
+## Filling in the App Store link
+
+The download button is wired up but has no address yet. Once the app is live, put
+the URL in one place — `APP_STORE_URL` at the top of `assets/app.js`:
+
+```js
+var APP_STORE_URL = 'https://apps.apple.com/app/id0000000000';
+```
+
+The badge then opens that address in a new tab. While the constant is empty the
+badge still renders, but clicking it does nothing.
+
+The badge itself is Apple's own artwork, pulled from Apple Marketing Tools:
+`assets/appstore-{en,zh}-{black,white}.svg` — English and Simplified Chinese,
+black for light mode and white for dark. Apple's guidelines forbid recolouring,
+stretching or adding effects to it, so the stylesheet only sets its height and
+keeps at least 10% of that height as clear space around it. Replace the files
+rather than restyling them if a different locale is ever needed.
 
 ## App Store Connect
 
@@ -34,18 +56,36 @@ to agree; change one and the other two need updating too.
 
 # Pencil Monitor — 网站
 
-Pencil Monitor 的对外站点：主页、隐私政策，以及带常见问题的技术支持页。纯静态
+Pencil Monitor 的对外站点：主页、隐私政策，以及带常见问题的帮助与反馈页。纯静态
 HTML，无需构建，由 GitHub Pages 托管。
 
 | 页面 | 文件 | 地址 |
 |---|---|---|
 | 主页 | `index.html` | `https://shenx0727.github.io/PRIVACY-policy-of-PencilMonitor/` |
 | 隐私政策 | `privacy.html` | `.../privacy.html` |
-| 技术支持 | `support.html` | `.../support.html` |
+| 帮助与反馈 | `support.html` | `.../support.html` |
 
 `assets/` 存放共用样式、共用脚本与图片（App 图标、favicon、开发者头像）。三个
 页面均为中英双语，按浏览器语言自动选择，也可在右上角手动切换，选择会记在
 `localStorage` 里。
+
+主页上有三个按钮：**App Store 下载**、**隐私政策**、**帮助与反馈**。
+
+## 填入 App Store 链接
+
+下载按钮已经接好线，只差地址。上架后把链接填在一处即可——`assets/app.js` 顶部的
+`APP_STORE_URL`：
+
+```js
+var APP_STORE_URL = 'https://apps.apple.com/app/id0000000000';
+```
+
+填好后徽章会在新标签页打开该地址。常量为空时徽章照常显示，但点击不跳转。
+
+徽章用的是苹果官方素材（Apple Marketing Tools），共四份：
+`assets/appstore-{en,zh}-{black,white}.svg`——中英各一套，浅色模式用黑底、深色
+模式用白底。苹果规范禁止改色、拉伸或叠加效果，因此样式表只设定高度，并在四周
+留出不少于高度 10% 的净空。要换语种就直接换文件，不要改样式。
 
 ## App Store Connect
 
