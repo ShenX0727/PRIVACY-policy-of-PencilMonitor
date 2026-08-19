@@ -70,6 +70,13 @@
       b.addEventListener('click', function () { applyTheme(b.getAttribute('data-theme'), true); });
     });
 
+    var hint = document.querySelector('.hint');
+    if (hint) {
+      var fade = function () { hint.classList.toggle('gone', window.scrollY > 40); };
+      fade();
+      addEventListener('scroll', fade, { passive: true });
+    }
+
     var gear = document.querySelector('.gear'), prefs = document.querySelector('.prefs');
     if (gear && prefs) {
       var setOpen = function (on) {
