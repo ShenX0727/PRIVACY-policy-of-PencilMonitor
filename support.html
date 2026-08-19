@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>技术支持 · Pencil Monitor</title>
+<meta name="description" content="Pencil Monitor 技术支持：常见问题解答与联系方式。">
+<link rel="icon" href="assets/favicon.png">
+<link rel="stylesheet" href="assets/style.css">
+<script src="assets/app.js"></script>
+</head>
+<body>
+
+<div class="bar">
+  <a class="back" href="./">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+    <span data-lang="zh">主页</span><span data-lang="en">Home</span>
+  </a>
+  <span class="sp"></span>
+  <div class="langsw">
+    <button type="button" data-set="zh">中文</button><button type="button" data-set="en">EN</button>
+  </div>
+</div>
+
+<div class="hero sm">
+  <div class="hero-in">
+    <img class="appicon" src="assets/icon.webp" alt="Pencil Monitor">
+    <span class="wordmark"><span class="w1">Pencil</span><span class="w2"> Monitor</span></span>
+    <h1 data-lang="zh">技术支持</h1>
+    <h1 data-lang="en">Support</h1>
+    <p class="claim">
+      <span data-lang="zh">有问题？写封邮件就好</span>
+      <span data-lang="en">Stuck? Just send an email</span>
+    </p>
+    <p class="sub" data-lang="zh">
+      下面是使用中最常遇到的问题。点开任意一条查看回答；没找到答案就直接写信给我们，
+      中文或英文都可以。
+    </p>
+    <p class="sub" data-lang="en">
+      Below are the questions that come up most often. Tap any row to read the answer — and if
+      yours is not there, write to us in English or Chinese.
+    </p>
+    <div class="cta">
+      <a class="btn solid" href="mailto:sheri918303284@163.com">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg>
+        sheri918303284@163.com
+      </a>
+    </div>
+  </div>
+</div>
+
+<main>
+
+  <!-- ── 上手 ─────────────────────────────────────────── -->
+  <section class="head reveal">
+    <p class="eyebrow" data-lang="zh">上手</p><p class="eyebrow" data-lang="en">Getting started</p>
+    <h2 data-lang="zh">开始之前</h2>
+    <h2 data-lang="en">Before you start</h2>
+
+    <div class="faq">
+      <div class="qa" id="requirements">
+        <button class="q" type="button">
+          <span class="qt" data-lang="zh">支持哪些设备和系统？</span>
+          <span class="qt" data-lang="en">Which devices and systems are supported?</span>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+        </button>
+        <div class="a"><div class="a-in">
+          <p data-lang="zh">
+            需要 iPadOS 26.0 或更高版本，仅支持 iPad。传感器相关的功能都需要一支 Apple Pencil；
+            部分体检项目还需要特定型号，具体见下面的「为什么有些体检项目找不到」。
+          </p>
+          <p data-lang="en">
+            iPadOS 26.0 or later, iPad only. All sensor features need an Apple Pencil, and some
+            tests additionally need a specific model — see “Why is a test missing from the menu?”
+            below.
+          </p>
+        </div></div>
+      </div>
+
+      <div class="qa" id="simulator">
+        <button class="q" type="button">
+          <span class="qt" data-lang="zh">在模拟器里为什么什么都测不出来？</span>
+          <span class="qt" data-lang="en">Why does nothing work in the Simulator?</span>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+        </button>
+        <div class="a"><div class="a-in">
+          <p data-lang="zh">
+            模拟器无法模拟 Apple Pencil，也没有触觉反馈。所有传感器与体检功能都必须在真机上验证。
+          </p>
+          <p data-lang="en">
+            The Simulator cannot emulate an Apple Pencil and has no haptics. Every sensor and test
+            feature has to be verified on real hardware.
+          </p>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 连接与识别 ───────────────────────────────────── -->
+  <section class="head reveal">
+    <p class="eyebrow" data-lang="zh">连接与识别</p><p class="eyebrow" data-lang="en">Connection &amp; model</p>
+    <h2 data-lang="zh">笔没被认出来</h2>
+    <h2 data-lang="en">When the pencil is not recognised</h2>
+
+    <div class="faq">
+      <div class="qa" id="not-detected">
+        <button class="q" type="button">
+          <span class="qt" data-lang="zh">一直显示没有检测到 Apple Pencil，怎么办？</span>
+          <span class="qt" data-lang="en">The app never detects my Apple Pencil. What now?</span>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+        </button>
+        <div class="a"><div class="a-in">
+          <p data-lang="zh">
+            系统没有开放配对状态接口，应用里的「已检测到」指的是<strong>本次会话收到过笔的事件</strong>
+            ——一次笔尖触摸，或一次悬停。所以打开应用后先用笔在屏幕上点一下，状态才会亮起。
+          </p>
+          <p data-lang="zh">如果点了还是没反应，依次检查：</p>
+          <ul data-lang="zh">
+            <li>「设置 → Apple Pencil」里笔是否已配对、是否有电</li>
+            <li>笔尖是否拧紧，屏幕保护膜是否过厚</li>
+            <li>是不是第三方笔——部分第三方笔不回报压力等信号</li>
+            <li>开发者模式里的「信号屏蔽」开关是否被打开过</li>
+          </ul>
+          <p data-lang="en">
+            iPadOS exposes no pairing-status API. “Detected” in the app means the app has
+            <strong>received a pencil event in this session</strong> — one tip touch, or one hover.
+            So tap the screen once with the pencil after launching; the status lights up then.
+          </p>
+          <p data-lang="en">If tapping changes nothing, check in order:</p>
+          <ul data-lang="en">
+            <li>Settings → Apple Pencil: is the pencil paired, and does it have charge?</li>
+            <li>Is the tip screwed on tight, and is the screen protector very thick?</li>
+            <li>Is it a third-party stylus? Some report no pressure or other signals.</li>
+            <li>Are any of the “signal masking” switches in developer mode still on?</li>
+          </ul>
+        </div></div>
+      </div>
+
+      <div class="qa" id="stays-detected">
+        <button class="q" type="button">
+          <span class="qt" data-lang="zh">笔已经放下很久了，为什么状态还是「已检测到」？</span>
+          <span class="qt" data-lang="en">I put the pencil away — why does it still say “detected”?</span>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+        </button>
+        <div class="a"><div class="a-in">
+          <p data-lang="zh">
+            系统同样不提供断开信号。应用只能知道「收到过」，无法知道「已断开」，因此该状态一旦为真
+            就不再改变，直到下次重新启动应用。这是接口限制，不是显示错误。
+          </p>
+          <p data-lang="en">
+            The system provides no disconnect signal either. The app can only know that events have
+            arrived, never that the pencil has gone away, so once the status is true it stays true
+            until the next launch. That is an API limitation, not a display bug.
+          </p>
+        </div></div>
+      </div>
+
+      <div class="qa" id="wrong-model">
+        <button class="q" type="button">
+          <span class="qt" data-lang="zh">型号认错了，显示成别的 Apple Pencil？</span>
+          <span class="qt" data-lang="en">The detected model is wrong.</span>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+        </button>
+        <div class="a"><div class="a-in">
+          <p data-lang="zh">
+            系统没有型号查询接口，应用只能按收到的独占信号往回推：轻捏与侧旋指向 Pro，双击指向
+            二代或 Pro，悬停指向二代 / USB-C / Pro，笔尖压力可以排除 USB-C 与部分第三方笔。
+            信号没触发过，推断自然就保守。
+          </p>
+          <p data-lang="zh">
+            在概览页工具栏的「Pencil 类型」里可以<strong>手动指定型号</strong>，指定后所有页面按该型号显示。
+          </p>
+          <p data-lang="en">
+            There is no model-lookup API. The app infers backwards from the signals it has seen:
+            squeeze and barrel roll mean Pro; double-tap means 2nd generation or Pro; hover means
+            2nd generation, USB-C or Pro; tip pressure rules out USB-C and some third-party styluses.
+            If a signal never fires, the guess stays conservative.
+          </p>
+          <p data-lang="en">
+            You can <strong>set the model by hand</strong> under “Pencil type” in the dashboard
+            toolbar; every screen then follows that choice.
+          </p>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 硬件体检 ─────────────────────────────────────── -->
+  <section class="head reveal">
+    <p class="eyebrow" data-lang="zh">硬件体检</p><p class="eyebrow" data-lang="en">Hardware tests</p>
+    <h2 data-lang="zh">体检项目与结果</h2>
+    <h2 data-lang="en">Tests and results</h2>
+
+    <div class="faq">
+      <div class="qa" id="missing-test">
+        <button class="q" type="button">
+          <span class="qt" data-lang="zh">为什么有些体检项目在菜单里找不到？</span>
+          <span class="qt" data-lang="en">Why is a test missing from the menu?</span>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+        </button>
+        <div class="a"><div class="a-in">
+          <p data-lang="zh">
+            当前组合不支持的项目不会显示，避免做无意义的测试。各项的前置条件是：
+          </p>
+          <ul data-lang="zh">
+            <li><strong>悬停检测</strong>——笔与 iPad 双方都要支持悬停</li>
+            <li><strong>触觉反馈测试</strong>——Apple Pencil Pro</li>
+            <li><strong>挤压</strong>（轻捏）——Apple Pencil Pro</li>
+            <li><strong>双击</strong>——第二代及以后</li>
+          </ul>
+          <p data-lang="zh">
+            另外，「压力 · 倾角 · 旋转」的标题会随该型号实际拥有的通道改写，缺少的通道不会出现。
+          </p>
+          <p data-lang="en">
+            Tests that the current combination cannot run are hidden rather than shown greyed out.
+            The requirements are:
+          </p>
+          <ul data-lang="en">
+            <li><strong>Hover</strong> — both the pencil and the iPad must support it</li>
+            <li><strong>Barrel haptics</strong> — Apple Pencil Pro</li>
+            <li><strong>Squeeze</strong> — Apple Pencil Pro</li>
+            <li><strong>Double-tap</strong> — 2nd generation or later</li>
+          </ul>
+          <p data-lang="en">
+            The “pressure · tilt · roll” test also renames itself to the channels your model
+            actually has; missing channels are left out.
+          </p>
+        </div></div>
+      </div>
+
+      <div class="qa" id="hover">
+        <button class="q" type="button">
+          <span class="qt" data-lang="zh">我的 iPad 很新，为什么不支持悬停？</span>
+          <span class="qt" data-lang="en">My iPad is new — why is hover unsupported?</span>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+        </button>
+        <div class="a"><div class="a-in">
+          <p data-lang="zh">
+            悬停跟芯片代数无关，不能按新旧推断——iPad mini（A17 Pro）支持，而 iPad Air（第 5 代，M1）
+            不支持。应用以苹果官方的 Apple Pencil 兼容性文档为准：iPadOS 26 支持的 29 款机型中，
+            只有 8 款具备悬停。
+          </p>
+          <p data-lang="en">
+            Hover does not follow chip generation, so it cannot be inferred from how new the iPad is
+            — iPad mini (A17 Pro) has it, while iPad Air (5th generation, M1) does not. The app
+            follows Apple's own Apple Pencil compatibility document: of the 29 models supported by
+            iPadOS 26, only 8 have hover.
+          </p>
+        </div></div>
+      </div>
+
+      <div class="qa" id="haptics">
+        <button class="q" type="button">
+          <span class="qt" data-lang="zh">触觉反馈测试完全没感觉到震动？</span>
+          <span class="qt" data-lang="en">I feel nothing in the haptic feedback test.</span>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+        </button>
+        <div class="a"><div class="a-in">
+          <p data-lang="zh">
+            先确认<strong>笔尖正接触屏幕</strong>——笔身触觉只有在接触时才会触发，悬空点按不算。
+          </p>
+          <p data-lang="zh">
+            系统开放给应用的笔身触觉只有「对齐」与「路径完成」两种，不支持自定义强度、时长与波形，
+            系统也<strong>不回报马达是否真的动作</strong>。因此报告里这一项标记为主观结论，需要你自己
+            判断有没有感觉到。
+          </p>
+          <p data-lang="en">
+            First make sure the <strong>tip is touching the screen</strong> — barrel haptics only
+            fire on contact, not in mid-air.
+          </p>
+          <p data-lang="en">
+            The system exposes exactly two barrel haptics, “alignment” and “path completed”, with no
+            control over strength, duration or waveform, and it <strong>never reports whether the
+            motor actually moved</strong>. That is why the report marks this item as a subjective
+            result — the judgement is yours.
+          </p>
+        </div></div>
+      </div>
+
+      <div class="qa" id="low-grade">
+        <button class="q" type="button">
+          <span class="qt" data-lang="zh">压力 / 倾角 / 旋转的评级偏低，是笔坏了吗？</span>
+          <span class="qt" data-lang="en">A low grade on pressure / tilt / roll — is my pencil faulty?</span>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+        </button>
+        <div class="a"><div class="a-in">
+          <p data-lang="zh">
+            评级衡量的是<strong>本次测试里各通道覆盖到的量程范围</strong>，不是硬件的绝对好坏。
+            如果只是轻轻划了几笔，压力没到过最重、笔没放到过很平、也没转过一整圈，覆盖率自然偏低。
+          </p>
+          <p data-lang="zh">
+            重测一次，刻意走满每个通道的两端：从最轻压到最重、从竖直压到接近贴平、把笔转满一圈。
+            若充分覆盖后仍有明显缺口，才值得怀疑硬件。
+          </p>
+          <p data-lang="en">
+            The grade measures <strong>how much of each channel's range you covered during that
+            run</strong>, not the absolute health of the hardware. A few light strokes that never
+            reach full force, never tilt the pencil flat and never roll it a full turn will score
+            low by construction.
+          </p>
+          <p data-lang="en">
+            Run it again and deliberately hit both ends of every channel: lightest to heaviest,
+            upright to nearly flat, a full rotation. Only a gap that survives thorough coverage is
+            worth suspecting the hardware for.
+          </p>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 画板与实时数据 ───────────────────────────────── -->
+  <section class="head reveal">
+    <p class="eyebrow" data-lang="zh">画板与实时数据</p><p class="eyebrow" data-lang="en">Canvas &amp; live data</p>
+    <h2 data-lang="zh">自己动手验证</h2>
+    <h2 data-lang="en">Checking it yourself</h2>
+
+    <div class="faq">
+      <div class="qa" id="gestures">
+        <button class="q" type="button">
+          <span class="qt" data-lang="zh">画板里轻捏 / 双击没反应？</span>
+          <span class="qt" data-lang="en">Squeeze or double-tap does nothing on the canvas.</span>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+        </button>
+        <div class="a"><div class="a-in">
+          <p data-lang="zh">
+            画板里的笔身手势由 PencilKit 原生处理，行为完全跟随「设置 → Apple Pencil」中的偏好：
+            轻捏呼出情境面板、双击切换工具。如果在系统设置里关掉了对应手势，画板里也不会有反应。
+            想看每次按压的阶段与时长，请到硬件体检的「挤压与双击」测试。
+          </p>
+          <p data-lang="en">
+            Barrel gestures on the canvas are handled natively by PencilKit and follow your
+            preferences in Settings → Apple Pencil: squeeze opens the contextual palette, double-tap
+            switches tools. If the gesture is switched off there, nothing happens here either. To see
+            the phases and duration of each press, use the “squeeze and double-tap” hardware test.
+          </p>
+        </div></div>
+      </div>
+
+      <div class="qa" id="readouts">
+        <button class="q" type="button">
+          <span class="qt" data-lang="zh">实时数据里的数字都代表什么？</span>
+          <span class="qt" data-lang="en">What do the numbers in live data mean?</span>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+        </button>
+        <div class="a"><div class="a-in">
+          <p data-lang="zh">
+            屏幕坐标是笔尖在屏幕上的位置；按压力度归一到 0–255；倾角与方位角以弧度表示——倾角是笔与
+            屏幕的夹角，方位角是笔在屏幕平面上的朝向；侧旋指针对应笔身的转动角度。
+          </p>
+          <p data-lang="zh">
+            这些值全部来自系统的真实事件流，并且逐帧取的是整帧采样，而不是每帧只取最后一个点。
+          </p>
+          <p data-lang="en">
+            The coordinates are the tip's position on screen; force is normalised to 0–255; altitude
+            and azimuth are in radians — altitude is the angle between pencil and screen, azimuth is
+            the direction it points in the screen plane; the dial shows barrel-roll angle.
+          </p>
+          <p data-lang="en">
+            All of it comes from the system's real event stream, and each frame is read as a full
+            batch of samples rather than just its last point.
+          </p>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 报告 ─────────────────────────────────────────── -->
+  <section class="head reveal">
+    <p class="eyebrow" data-lang="zh">报告</p><p class="eyebrow" data-lang="en">Report</p>
+    <h2 data-lang="zh">设备健康报告</h2>
+    <h2 data-lang="en">The device health report</h2>
+
+    <div class="faq">
+      <div class="qa" id="export">
+        <button class="q" type="button">
+          <span class="qt" data-lang="zh">怎么导出设备健康报告？</span>
+          <span class="qt" data-lang="en">How do I export the health report?</span>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+        </button>
+        <div class="a"><div class="a-in">
+          <p data-lang="zh">
+            在概览页工具栏点「报告」生成，然后导出为文本或 PDF，用系统分享发送。建议先把想要的体检
+            项目跑完再生成，报告会一并收录结果。传输这一步完全由你发起，应用不参与。
+          </p>
+          <p data-lang="en">
+            Tap “Report” in the dashboard toolbar to generate it, then export as text or PDF and send
+            it through the system share sheet. Run the tests you care about first — their results are
+            included. The sending step is entirely yours; the app takes no part in it.
+          </p>
+        </div></div>
+      </div>
+
+      <div class="qa" id="missing-fields">
+        <button class="q" type="button">
+          <span class="qt" data-lang="zh">报告里为什么没有序列号、电量和笔尖磨损？</span>
+          <span class="qt" data-lang="en">Why is there no serial number, battery level or tip wear?</span>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+        </button>
+        <div class="a"><div class="a-in">
+          <p data-lang="zh">
+            iOS 没有向第三方应用开放这些接口：设备序列号不可读，笔的电量、笔尖磨损与配对状态也都没有
+            公开接口。报告改用苹果官方的替代标识 <code>identifierForVendor</code>（IDFV）来标记设备。
+          </p>
+          <p data-lang="en">
+            iOS does not expose any of these to third-party apps: the device serial number is not
+            readable, and there is no public API for pencil battery level, tip wear or pairing state.
+            The report identifies the device with Apple's own substitute,
+            <code>identifierForVendor</code> (IDFV), instead.
+          </p>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 设置与数据 ───────────────────────────────────── -->
+  <section class="head reveal">
+    <p class="eyebrow" data-lang="zh">设置与数据</p><p class="eyebrow" data-lang="en">Settings &amp; data</p>
+    <h2 data-lang="zh">外观、重置与隐私</h2>
+    <h2 data-lang="en">Appearance, reset and privacy</h2>
+
+    <div class="faq">
+      <div class="qa" id="appearance">
+        <button class="q" type="button">
+          <span class="qt" data-lang="zh">怎么切换语言、主题和 App 图标？</span>
+          <span class="qt" data-lang="en">How do I change the language, theme or app icon?</span>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+        </button>
+        <div class="a"><div class="a-in">
+          <p data-lang="zh">
+            都在概览页工具栏的「⋯ → 外观」里：八款 App 图标、两套主题配色、深浅跟随系统或手动指定。
+            语言切换即时生效，不需要重启应用。
+          </p>
+          <p data-lang="en">
+            All under “⋯ → Appearance” in the dashboard toolbar: eight app icons, two colour themes,
+            and light/dark either following the system or set by hand. Language changes take effect
+            immediately, with no restart.
+          </p>
+        </div></div>
+      </div>
+
+      <div class="qa" id="reset">
+        <button class="q" type="button">
+          <span class="qt" data-lang="zh">怎么清空全部设置、恢复到初装状态？</span>
+          <span class="qt" data-lang="en">How do I clear everything and start over?</span>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+        </button>
+        <div class="a"><div class="a-in">
+          <p data-lang="zh">
+            应用内提供「初始化应用」，会清空全部设置与数据，回到初装状态；也可以直接删除应用，
+            沙盒里的数据会一并清除。应用的数据只存在本机，删掉就没有了。
+          </p>
+          <p data-lang="en">
+            The app has a reset function that clears all settings and data back to a fresh install;
+            deleting the app removes its sandbox contents just the same. Everything lives on the
+            device only, so once it is gone it is gone.
+          </p>
+        </div></div>
+      </div>
+
+      <div class="qa" id="privacy">
+        <button class="q" type="button">
+          <span class="qt" data-lang="zh">应用会收集我的数据吗？</span>
+          <span class="qt" data-lang="en">Does the app collect my data?</span>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+        </button>
+        <div class="a"><div class="a-in">
+          <p data-lang="zh">
+            不会。应用不含网络传输功能，不设账号，未接入统计分析、崩溃上报或广告组件，也不跨应用追踪。
+            全部读数都在本机处理与显示。完整说明见<a href="privacy.html">隐私政策</a>。
+          </p>
+          <p data-lang="en">
+            No. There is no network code, no account system, no analytics, no crash reporting, no ads
+            and no cross-app tracking; every reading is processed and shown on the device. The full
+            statement is in the <a href="privacy.html">privacy policy</a>.
+          </p>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 联系 ─────────────────────────────────────────── -->
+  <section class="head reveal">
+    <p class="eyebrow" data-lang="zh">联系我们</p><p class="eyebrow" data-lang="en">Contact</p>
+    <h2 data-lang="zh">没找到答案？</h2>
+    <h2 data-lang="en">Still stuck?</h2>
+    <p class="lede" data-lang="zh">
+      直接写邮件给我们，中文或英文都可以。为了尽快定位问题，来信时请尽量附上：
+    </p>
+    <p class="lede" data-lang="en">
+      Write to us in English or Chinese. To help us find the problem faster, please include:
+    </p>
+
+    <div class="spec">
+      <div>
+        <b data-lang="zh">设备</b><b data-lang="en">Device</b>
+        <span data-lang="zh">iPad 型号与 iPadOS 版本</span><span data-lang="en">iPad model and iPadOS version</span>
+      </div>
+      <div>
+        <b data-lang="zh">笔</b><b data-lang="en">Pencil</b>
+        <span data-lang="zh">Apple Pencil 型号（或第三方笔的品牌型号）</span>
+        <span data-lang="en">Apple Pencil model, or the brand and model of a third-party stylus</span>
+      </div>
+      <div>
+        <b data-lang="zh">版本</b><b data-lang="en">App version</b>
+        <span data-lang="zh">应用版本号，见「⋯ → 关于」</span>
+        <span data-lang="en">The app version, shown under “⋯ → About”</span>
+      </div>
+      <div>
+        <b data-lang="zh">复现</b><b data-lang="en">Steps</b>
+        <span data-lang="zh">出问题的页面、操作步骤，以及期望看到什么</span>
+        <span data-lang="en">Which screen, what you did, and what you expected instead</span>
+      </div>
+      <div>
+        <b data-lang="zh">附件</b><b data-lang="en">Attachment</b>
+        <span data-lang="zh">导出的设备健康报告（可选，但很有帮助）</span>
+        <span data-lang="en">An exported health report — optional, but it helps a lot</span>
+      </div>
+    </div>
+
+    <div class="cta" style="justify-content:flex-start">
+      <a class="btn solid" href="mailto:sheri918303284@163.com">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg>
+        sheri918303284@163.com
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="foot-in">
+    <div class="foot-nav">
+      <a href="./"><span data-lang="zh">主页</span><span data-lang="en">Home</span></a>
+      <a href="privacy.html"><span data-lang="zh">隐私政策</span><span data-lang="en">Privacy Policy</span></a>
+      <a href="mailto:sheri918303284@163.com"><span data-lang="zh">联系我们</span><span data-lang="en">Contact</span></a>
+    </div>
+    <p>© 2026 <span class="wordmark"><span class="w1">Pencil</span><span class="w2"> Monitor</span></span></p>
+  </div>
+</footer>
+
+</body>
+</html>
