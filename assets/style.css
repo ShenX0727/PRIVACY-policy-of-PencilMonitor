@@ -1,3 +1,11 @@
+@property --hero-a{syntax:"<color>";inherits:true;initial-value:#efedff}
+@property --hero-b{syntax:"<color>";inherits:true;initial-value:#fff}
+
+html.theming{transition:--hero-a .4s var(--ease),--hero-b .4s var(--ease)}
+html.theming *,html.theming *::before,html.theming *::after{
+  transition-property:background-color,border-color,color,fill,box-shadow;
+  transition-duration:.4s;transition-timing-function:var(--ease)}
+
 :root{
   --bg:#fff; --fg:#1d1d1f; --muted:#5f5f68; --faint:#8e8e99;
   --rule:#e9e8f2; --card:#faf9ff; --card-line:#e8e6f5;
@@ -29,7 +37,8 @@ html{scroll-behavior:smooth}
 body{margin:0;background:var(--bg);color:var(--fg);overflow-x:hidden;
   font:17px/1.75 -apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",
        "PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
-  -webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%}
+  -webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%;
+  transition:background-color .35s var(--ease),color .3s ease}
 a{color:var(--accent);text-decoration:none}
 a:hover{text-decoration:underline}
 p{margin:13px 0}
@@ -75,22 +84,27 @@ html[data-active="en"] [data-lang="zh"]{display:none}
 .prefs.open{opacity:1;transform:none;pointer-events:auto}
 .prefs-t{margin:0 0 7px;font-size:11px;font-weight:700;letter-spacing:.09em;
          text-transform:uppercase;color:var(--faint)}
-.seg{display:flex;border:1px solid var(--card-line);border-radius:11px;overflow:hidden;
-     margin:0 0 14px}
+.seg{position:relative;display:flex;border:1px solid var(--card-line);border-radius:11px;
+     overflow:hidden;margin:0 0 14px}
 .seg:last-child{margin-bottom:0}
-.seg button{flex:1;appearance:none;border:0;background:none;cursor:pointer;
-  color:var(--muted);font:600 13px/1 inherit;padding:9px 4px;
+.seg::before{content:"";position:absolute;top:0;bottom:0;left:0;pointer-events:none;
+  width:calc(100% / var(--n,2));background:var(--soft);border-radius:9px;
+  transform:translateX(calc(var(--i,0) * 100%));transition:none}
+.seg.ready::before{transition:transform .34s var(--ease),background-color .4s var(--ease)}
+.seg button{position:relative;z-index:1;flex:1;appearance:none;border:0;background:none;
+  cursor:pointer;color:var(--muted);font:600 13px/1 inherit;padding:9px 4px;
   display:flex;align-items:center;justify-content:center;gap:5px;
-  transition:background .2s ease,color .2s ease}
-.seg button+button{border-left:1px solid var(--card-line)}
+  transition:color .25s ease,transform .18s var(--ease)}
 .seg button svg{width:14px;height:14px;flex:none}
 .seg button:hover{color:var(--fg)}
-.seg button[aria-pressed="true"]{background:var(--soft);color:var(--accent)}
+.seg button:active{transform:scale(.94)}
+.seg button[aria-pressed="true"]{color:var(--accent)}
 
 .hero{position:relative;text-align:center;
       background:radial-gradient(130% 62% at 50% 0%,var(--hero-a) 0%,var(--hero-b) 72%)}
 .hero-in{max-width:820px;margin:0 auto;padding:18px 24px 56px}
-.hero.bare{padding-top:calc(20px + var(--safe))}
+.hero.bare{min-height:100vh;min-height:100svh;display:flex;flex-direction:column;
+           justify-content:center;padding:calc(76px + var(--safe)) 0 76px}
 .appicon{width:186px;height:186px;display:block;margin:-18px auto -10px}
 .hero.sm{padding-top:calc(16px + var(--safe))}
 .hero.sm .appicon{width:104px;height:104px;margin:6px auto 12px}
@@ -141,8 +155,7 @@ html:not(.js) .hint{display:none}
 .btn.solid:hover{background:var(--bright);border-color:var(--bright);color:var(--on-accent)}
 .btn svg{width:17px;height:17px}
 
-.cta.main{gap:14px;margin-top:34px}
-.cta.main .btn{padding:14px 26px;font-size:16.5px}
+.cta.main{margin-top:38px}
 .store-badge{display:inline-flex;align-items:center;line-height:0}
 .store-badge:hover{text-decoration:none}
 .store-badge img{height:54px;width:auto;display:block}
@@ -249,14 +262,12 @@ html.js .reveal.in{opacity:1;transform:none}
 @media (max-width:640px){
   :root{--bar:48px}
   .appicon{width:152px;height:152px}
-  .hero.bare{padding-top:calc(62px + var(--safe))}
+  .hero.bare{padding:calc(74px + var(--safe)) 0 56px}
   .stage .appicon{width:162px;height:162px;margin:-22px auto}
-  .hero-in{padding-bottom:44px}
+  .hero-in{padding-bottom:0}
   .row{grid-template-columns:1fr;gap:12px;padding:32px 0}
   .spec div{grid-template-columns:1fr;gap:2px;padding:13px 18px}
   .card .bio{text-align:center}
   .a-in p,.a-in ul{padding-right:0}
-  .cta.main{flex-direction:column;align-items:stretch;padding:0 8px}
-  .cta.main .btn{justify-content:center}
-  .cta.main .store-badge{align-self:center}
+  .cta.main{margin-top:32px}
 }

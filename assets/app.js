@@ -20,7 +20,17 @@
 
   function mark(sel, attr, value) {
     document.querySelectorAll(sel).forEach(function (b) {
-      b.setAttribute('aria-pressed', String(b.getAttribute(attr) === value));
+      var on = b.getAttribute(attr) === value;
+      b.setAttribute('aria-pressed', String(on));
+      var seg = b.parentElement;
+      if (!seg || !seg.classList.contains('seg')) return;
+      var kids = [].slice.call(seg.querySelectorAll('button'));
+      seg.style.setProperty('--n', kids.length);
+      if (!on) return;
+      seg.style.setProperty('--i', kids.indexOf(b));
+      if (!seg.classList.contains('ready')) {
+        requestAnimationFrame(function () { seg.classList.add('ready'); });
+      }
     });
   }
 
@@ -32,7 +42,13 @@
     if (window.__pmSync) requestAnimationFrame(window.__pmSync);
   }
 
+  var themeTimer;
   function applyTheme(t, remember) {
+    if (remember) {
+      root.classList.add('theming');
+      clearTimeout(themeTimer);
+      themeTimer = setTimeout(function () { root.classList.remove('theming'); }, 480);
+    }
     if (t === 'auto') { root.removeAttribute('data-theme'); } else { root.setAttribute('data-theme', t); }
     if (remember) store(THEME, t);
     mark('.seg button[data-theme]', 'data-theme', t);
